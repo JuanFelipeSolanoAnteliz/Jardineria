@@ -1,3 +1,3 @@
-from modulos.getClients import shearchName
-
-shearchName()
+import modulos.getClients as clientes
+from tabulate import tabulate
+print (tabulate(clientes.getAllClientName()))
