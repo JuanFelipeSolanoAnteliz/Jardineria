@@ -17,3 +17,14 @@ def getOneClientCode(codigo):
           "nombre_cliente": val.get("nombre_cliente")
       }
     
+
+def getAllSpainClient(spain):
+  for val in cli.clientes:
+    if(val.get("pais") == spain ):
+      return {
+        "nombre_cliente": val.get("nombre_cliente"),
+        "pais": val.get("pais")
+      }
+    
+
+
