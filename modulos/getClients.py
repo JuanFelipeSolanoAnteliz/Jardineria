@@ -9,4 +9,11 @@ def getAllClientName():
     clientName.append(CodigoName)
   return clientName
 
-        
+def getOneClientCode(codigo):
+  for val in cli.clientes:
+    if(val.get("codigo_cliente") == codigo):
+      return {
+          "codigo_cliente": val.get("codigo_cliente"),
+          "nombre_cliente": val.get("nombre_cliente")
+      }
+    

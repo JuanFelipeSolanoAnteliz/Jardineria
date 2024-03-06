@@ -1,3 +1,7 @@
-import modulos.getClients as clientes
 from tabulate import tabulate
-print (tabulate(clientes.getAllClientName()))
+
+import modulos.getClients as clientes
+import modulos.getOficina as of 
+import modulos.getEmpleados as em 
+
+print (tabulate(em.getAllNAP("Representante Ventas")))
