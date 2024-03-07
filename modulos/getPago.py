@@ -7,6 +7,7 @@ def getAllPago08Paypal():
         if val.get("forma_pago") == "PayPal":
             if año.startswith("2008"):
                 formaPago.append({
+                    "codigo_cliente": val.get("codigo_cliente"),
                     "fecha_pago": val.get("fecha_pago"),
                     "forma_pago": val.get("forma_pago")
                 })
