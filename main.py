@@ -10,3 +10,4 @@ print(tabulate(ped.getAllPedRechazado2009(),tablefmt = 'rounded_grid'))
 #data = ped.getAllPedidosEntregAtraDeTiemp()
 #print(data)
 
+#recuerde siempre poner autoguardado o dar crt+s
