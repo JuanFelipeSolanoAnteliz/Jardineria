@@ -4,8 +4,9 @@ import modulos.getClients as clientes
 import modulos.getOficina as of 
 import modulos.getEmpleados as em 
 import modulos.getPedido as ped 
+import modulos.getPago as pa 
 
-print(tabulate(ped.getAllPedRechazado2009(),tablefmt = 'rounded_grid'))
+print(tabulate(pa.getAllPago08Paypal(),tablefmt = 'rounded_grid'))
 
 #data = ped.getAllPedidosEntregAtraDeTiemp()
 #print(data)

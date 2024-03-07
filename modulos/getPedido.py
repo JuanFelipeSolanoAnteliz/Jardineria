@@ -104,3 +104,15 @@ def getAllPedRechazado2009():
                 })
             
     return pedidoRechazado
+
+def getAllpepdiosEnero():
+    pedidoEnero = []
+    for val in ped.pedido:
+      
+        if val.get("fecha_entrega") != None and val.get("estado") == "Entregado":
+            fechaentrega = "/".join(val.get("fecha_entrega").split("-")[::-1])
+            start = datetime.strptime(fechaentrega,"%d/%m/%Y" )
+            if val.get("estado") == "Entregado" and start.month == 1:
+                pedidoEnero.append(val)
+
+    return pedidoEnero
