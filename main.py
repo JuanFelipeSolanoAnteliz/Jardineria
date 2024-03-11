@@ -1,4 +1,4 @@
-#from tabulate import tabulate11
+#from tabulate import tabulate
 
 import modulos.getClients as clientes
 import modulos.getOficina as of 

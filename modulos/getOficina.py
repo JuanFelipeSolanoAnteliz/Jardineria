@@ -1,5 +1,5 @@
 import storage.oficina as of
-
+#12
 def getAllCodigoCiudad():
     codigoCiudad = []
     for val in of.oficina:
@@ -8,7 +8,7 @@ def getAllCodigoCiudad():
             "ciudad": val.get("ciudad")
         })
     return codigoCiudad
-
+#13
 def getAllCiudadTelefono(pais):
     ciudadTelefono = []
     for val in of.oficina:

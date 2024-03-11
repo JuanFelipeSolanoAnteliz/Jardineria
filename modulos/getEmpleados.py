@@ -1,5 +1,6 @@
 import storage.empleado as em 
 
+#9
 def getAllNamesEmailBoss(codigo):
     nameEmailBoss = []
     for val in em.empleados:
@@ -14,7 +15,7 @@ def getAllNamesEmailBoss(codigo):
             }
             )
     return nameEmailBoss    
-
+#10
 def getAllpuestoNombreApellidoEmailJefe(puesto):
     puestoEmailJefe = []
     for val in em.empleados:
@@ -29,7 +30,7 @@ def getAllpuestoNombreApellidoEmailJefe(puesto):
         })
 
     return puestoEmailJefe
-
+#11
 def getAllNAP(rVentas):
     noRepresentante = []
    

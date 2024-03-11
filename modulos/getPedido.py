@@ -1,5 +1,5 @@
 import storage.pedido as ped
-
+#15
 def getAlEstado():
     estado = set ()
     for i, val in enumerate (ped.pedido):
@@ -10,21 +10,21 @@ def getAlEstado():
 #from datetime import datetime
 
 #def getAllPedidosEntregAtraDeTiemp():
- #   pedidosEntregado = set()
-  #     if (val.get("estado") == "entregado" and val.get("fecha_entrega"))is None:
-   #          val["fecha_entrega"] = val.get("fecha_esperada")
-    #    if val.get("estado") == "entregado":
-     #        date1 = "/".join(val.get("fecha_entrega").split("-")[::-1])
-      ##      start = datetime.strptime(date1, "%d/%m/%Y")
-        #     end = datetime.strptime(date2, "%d/%m/%Y")
-         #    diff = end.date() - start.date()
-          #   if(diff.day < 0):
-           #     pedidosEntregado.append({
-            #        "codigo_de_pedido":val.get("codigo_pedido"),
-             #       "codigo_de_cliente":val.get("codigo_cliente"),
-              #      "fecha_esperada": val.get("fecha_esperada"),
-               #     "fecha_de_entrega": val.get("fecha_entrega")
-             #})
+#      pedidosEntregado = set()
+#         if (val.get("estado") == "entregado" and val.get("fecha_entrega"))is None:
+#               val["fecha_entrega"] = val.get("fecha_esperada")
+#          if val.get("estado") == "entregado":
+#               date1 = "/".join(val.get("fecha_entrega").split("-")[::-1])
+#              start = datetime.strptime(date1, "%d/%m/%Y")
+#              end = datetime.strptime(date2, "%d/%m/%Y")
+#              diff = end.date() - start.date()
+#              if(diff.day < 0):
+#                  pedidosEntregado.append({
+#                     "codigo_de_pedido":val.get("codigo_pedido"),
+#                      "codigo_de_cliente":val.get("codigo_cliente"),
+#                      "fecha_esperada": val.get("fecha_esperada"),
+#                      "fecha_de_entrega": val.get("fecha_entrega")
+#             })
     #return pedidosEntregado        
 
 from datetime import datetime
@@ -49,7 +49,7 @@ from datetime import datetime
 #                    "fecha_de_entrega": val.get("fecha_entrega")
 #                })
 #       return pedidosEntregado
-
+#15
 def getAllPedidosEntregadosAtrasadosDeTiempo():
     pedidosEntregado = list()
     for val in ped.pedido:
@@ -69,7 +69,7 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
                     "fecha_de_entrega": val.get("fecha_entrega")
                 })
     return pedidosEntregado
-
+#16
 def getAllCodigoPedDosantesDiasFechaespera():
     pedidoAdelantado = list()
 
@@ -90,7 +90,7 @@ def getAllCodigoPedDosantesDiasFechaespera():
                     "fecha_de_entrega": val.get("fecha_entrega")
                 })
     return pedidoAdelantado
-
+#17
 def getAllPedRechazado2009():
     pedidoRechazado = []
     for val in ped.pedido:
@@ -104,7 +104,7 @@ def getAllPedRechazado2009():
                 })
             
     return pedidoRechazado
-
+#18
 def getAllpepdiosEnero():
     pedidoEnero = []
     for val in ped.pedido:
