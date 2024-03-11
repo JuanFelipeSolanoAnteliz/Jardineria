@@ -20,6 +20,7 @@ def menu():
                 2. oficina
                 3. empleados
                 4. pedidos
+                5. pagos
     """)
     
 menu()
@@ -33,6 +34,8 @@ elif(opcion == 3):
         em.menu()
 elif(opcion == 4):
         ped.menu()
+elif(opcion == 5):
+        pa.menu()
 
 
 #import sys
