@@ -1,4 +1,5 @@
 import storage.pago as pa
+from tabulate import tabulate
 #14
 def getAllPago08Paypal():
     formaPago = []
@@ -38,10 +39,23 @@ def getAllFormaPago():
     return formaDePago
 
 def menu():
-    print(""" 
-                            Reporte de pagos
-          1. lista de pagos realizados con paypal en 2008
-          2. lista de pagos realizados con paypal 
-          3. obtener una lista de formas de pagos
-""")
+    while True:
+        print(""" 
+                                Reporte de pagos
+            1. lista de pagos realizados con paypal en 2008
+            2. lista de pagos realizados con paypal 
+            3. obtener una lista de formas de pagos
+    """)
+        
+        opcion = int(input("Ingrese una opcion: "))
+
+        if opcion == 1:
+            print(tabulate(getAllPago08Paypal(), headers = "keys", tablefmt ="rounded_grid"))
+
+        elif opcion == 2:
+            print(tabulate(getAllpagosPaypal(), headers = "keys", tablefmt = "rounded_grid" ))
+
+        elif opcion == 2:
+            print(tabulate(getAllFormaPago(), headers = "keys", tablefmt = "rounded_grid" ))
+        
 

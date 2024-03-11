@@ -130,57 +130,78 @@ def getAlldataByTlf(telefono):
   
     
 def menu():
-  print("""
-         _____                       _                  _        _                  _ _            _                     
-        |  __ \                     | |                | |      | |                | (_)          | |            
-        | |__) |___ _ __   ___  _ __| |_ ___  ___    __| | ___  | | ___  ___    ___| |_  ___ _ __ | |_ ___  ___  
-        |  _  // _ \ '_ \ / _ \| '__| __/ _ \/ __|  / _` |/ _ \ | |/ _ \/ __|  / __| | |/ _ \ '_ \| __/ _ \/ __| 
-        | | \ \  __/ |_) | (_) | |  | ||  __/\__ \ | (_| |  __/ | | (_) \__ \ | (__| | |  __/ | | | ||  __/\__ \ 
-        |_|  \_\___| .__/ \___/|_|   \__\___||___/  \__,_|\___| |_|\___/|___/  \___|_|_|\___|_| |_|\__\___||___/ 
-                   | |                                                                                           
-                   |_|  
-        
-        
-        1. obtener todos los clientes (noimbre y codigo)
-        2. obtener un cliente por el codigo de cliente (codigo y nombre)
-        3. obtener la informacion de un cliente segun el limite de credito y la ciudad (ej: 3000.0 - San Francisco)
-        4. obtener la informacion de los clientes Españoles
-        5. obtener la informacion del cliente segun las direcciones del cliente
-        6. obtener codigo nombre, codigo portal y codigo de empleado por reporte de venta 
-           a partir del codigo postal 
-        7. obtener nombre y region del cliente 
-        8. obtener los datos del cliente a partir del numero de telefono  
-""")
+  """
+  Muestra un menú con opciones para consultar información de clientes.
+  """
+  while True:
+
+    print("""
+           ____                       _             _      
+          |  _ \ ___ _ __   ___  _ __| |_ ___    __| | ___ 
+          | |_) / _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ !
+          |  _ <  __/ |_) | (_) | |  | ||  __/ | (_| |  __/
+          |_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___|
+            ___| (_)|_|_ _ __ | |_ ___  ___                
+          / __| | |/ _ \ '_ \| __/ _ \/ __|               
+          | (__| | |  __/ | | | ||  __/\__ \               
+          \___|_|_|\___|_| |_|\__\___||___/       
+      
+
+    1. Obtener todos los clientes (nombre y código)
+    2. Obtener un cliente por el codigo de cliente (codigo y nombre)
+    3. Obtener la información de un cliente según el límite de crédito y la ciudad (ej: 3000.0 - San Francisco)
+    4. Obtener la información de los clientes Españoles
+    5. Obtener la información del cliente según las direcciones del cliente
+    6. Obtener codigo nombre, codigo portal y codigo de empleado por reporte de venta 
+      a partir del codigo postal 
+    7. Obtener nombre y region del cliente 
+    8. Obtener los datos del cliente a partir del numero de telefono  
+    0. Salir
+
+    """)
+
+    opcion = int(input("\nSeleccione una de las opciones: "))
+
+    if opcion == 1:
+      print(tabulate(getAllClientName(), headers="keys", tablefmt="rounded_grid"))
+    elif opcion == 2:
+      clientecode = int(input("Ingrese el codigo de cliente: "))
+      print(tabulate(getOneClientCode(clientecode), headers="keys", tablefmt="rounded_grid"))
+    elif opcion == 3:
+      limite = input("Ingrese el limite de credito: ")
+      ciudad = input("Ingrese ciudad: ")
+      print(
+        tabulate(
+          getAllClientCredCiudad(limite, ciudad), headers="keys", tablefmt="rounded_grid"
+        )
+      )
+    elif opcion == 4:
+      print(tabulate(getAllSpainClient(), headers="keys", tablefmt="rounded_grid"))
+    elif opcion == 5:
+      direccion_1 = input("Ingrese la direccion principal registrada del cliente: ")
+      direccion_2 = input("Ingrese una segunda direccion registrada: ")
+      print(
+        tabulate(
+          getDireccion(direccion_1, direccion_2), headers="keys", tablefmt="rounded_grid"
+        )
+      )
+    elif opcion == 6:
+      codigoPostal = input("Ingrese el codigo postal: ")
+      print(tabulate(getCodigostal(codigoPostal), headers="keys", tablefmt="rounded_grid"))
+    elif opcion == 7:
+      print(tabulate(getRegionClients(codigoPostal), headers="keys", tablefmt="rounded_grid"))
+    elif opcion == 8:
+      telefono = int(input("Ingrese el numero de telefono del cliente: "))
+      print(tabulate(getAlldataByTlf(telefono), headers="keys", tablefmt="rounded_grid"))
+    elif opcion > 8:
+      print("""
+                                                OPCION INVALIDA
+    """)
+    elif opcion == 0:
+      print("¡Hasta luego!")
+      break
+
+if __name__ == "__main__":
   menu()
-
-  opcion = int(input("\nSeleccone una de las opciones:"))
-  if opcion == 1:
-    print(tabulate(getAllClientName(), headers = "keys", tablefmt = "rounded_grid"))
-  elif opcion == 2:
-    clientecode = int(input("Ingrese el codigo de cliente: "))
-    print(tabulate(getOneClientCode(clientecode), headers = "keys", tablefmt = "rounded_grid"))
-  elif opcion == 3:
-    limite = input("ingrese el limite de credito: ")
-    ciudad = input("Ingrese ciudad: ")
-    print(tabulate(getAllClientCredCiudad(limite,ciudad), headers = "keys", tablefmt = "rounded_grid"))
-  elif opcion == 4:
-    print(tabulate(getAllSpainClient(),headers = "keys", tablefmt = "rounded_grid"))
-  
-  elif opcion == 5:
-    direccion_1 = input("Ingrese la direccion principal registrada del cliente: ")
-    direccion_2 = input("Ingrese una segunda direccion registrada: ")
-    print(tabulate(getDireccion(direccion_1,direccion_2),headers = "keys", tablefmt = "rounded_grid"))
-  
-  elif opcion == 6:
-    codigoPostal = input("Ingrese el codigo postal: ")
-    print(tabulate(getCodigostal(codigoPostal),headers = "keys", tablefmt = "rounded_grid"))
-  
-  elif opcion == 7:
-    print(tabulate(getRegionClients(codigoPostal),headers = "keys", tablefmt = "rounded_grid"))
-
-  elif opcion == 8:
-    telefono = int("Ingrese el numero de telefono del cliente:")
-    print(tabulate(getAlldataByTlf(telefono), headers = "keys", tablefmt = "rounded_grid"))
-    
 
     

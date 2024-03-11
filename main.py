@@ -6,36 +6,41 @@ import modulos.getEmpleados as em
 import modulos.getPedido as ped 
 import modulos.getPago as pa 
 
-def menu():
-    print(f"""
-  _    _                    _____      _            _             _
- |  \/  |                  |  __ \    (_)          (_)           | |
- | \  / | ___ _ __  _   _  | |__) | __ _ _ __   ___ _ _ __   __ _| |
- | |\/| |/ _ \ '_ \| | | | |  ___/ '__| | '_ \ / __| | '_ \ / _` | |
- | |  | |  __/ | | | |_| | | |   | |  | | | | | (__| | |_) | (_| | |
- |_|  |_|\___|_|_|_|\__,_| |_|   |_|  |_|_| |_|\___|_| .__/ \__,_|_|
-          
+if __name__ == "__main__":
 
-                1. cliente
-                2. oficina
-                3. empleados
-                4. pedidos
-                5. pagos
-    """)
-    
-menu()
-    
-opcion = int(input("\nSeleccone una de las opciones:"))
-if(opcion == 1):
-        clientes.menu()
-elif(opcion == 2):
-        of.menu()
-elif(opcion == 3):
-        em.menu()
-elif(opcion == 4):
-        ped.menu()
-elif(opcion == 5):
-        pa.menu()
+        while True:
+                print(f"""
+                _    _                    _____      _            _             _
+                |  \/  |                  |  __ \    (_)          (_)           | |
+                | \  / | ___ _ __  _   _  | |__) | __ _ _ __   ___ _ _ __   __ _| |
+                | |\/| |/ _ \ '_ \| | | | |  ___/ '__| | '_ \ / __| | '_ \ / _` | |
+                | |  | |  __/ | | | |_| | | |   | |  | | | | | (__| | |_) | (_| | |
+                |_|  |_|\___|_|_|_|\__,_| |_|   |_|  |_|_| |_|\___|_| .__/ \__,_|_|
+                        
+
+                                1. cliente
+                                2. oficina
+                                3. empleados
+                                4. pedidos
+                                5. pagos
+                                0. salir
+                """)
+                
+
+                
+                opcion = int(input("Seleccone una de las opciones:"))
+                if(opcion == 1):
+                    clientes.menu()
+                elif(opcion == 2):
+                      of.menu()
+                elif(opcion == 3):
+                      em.menu()
+                elif(opcion == 4):
+                      ped.menu()
+                elif(opcion == 5):
+                      pa.menu()
+                elif(opcion == 0):
+                      break
 
 
 #import sys

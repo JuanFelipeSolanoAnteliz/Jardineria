@@ -116,3 +116,8 @@ def getAllpepdiosEnero():
                 pedidoEnero.append(val)
 
     return pedidoEnero
+
+def menu():
+    print("""
+                                                        Reporte de pedidos
+""")
