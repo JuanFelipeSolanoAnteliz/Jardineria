@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
         while True:
                 print(f"""
-                _    _                    _____      _            _             _
+                 _    _                    _____      _            _             _
                 |  \/  |                  |  __ \    (_)          (_)           | |
                 | \  / | ___ _ __  _   _  | |__) | __ _ _ __   ___ _ _ __   __ _| |
                 | |\/| |/ _ \ '_ \| | | | |  ___/ '__| | '_ \ / __| | '_ \ / _` | |
@@ -23,12 +23,13 @@ if __name__ == "__main__":
                                 3. empleados
                                 4. pedidos
                                 5. pagos
+                      
                                 0. salir
                 """)
                 
 
                 
-                opcion = int(input("Seleccone una de las opciones:"))
+                opcion = int(input("¡Bienvendo! Seleccone una de las opciones:"))
                 if(opcion == 1):
                     clientes.menu()
                 elif(opcion == 2):
@@ -40,6 +41,7 @@ if __name__ == "__main__":
                 elif(opcion == 5):
                       pa.menu()
                 elif(opcion == 0):
+                      print("Vuelva pronto :D")
                       break
 
 

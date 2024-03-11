@@ -24,20 +24,31 @@ def getAllCiudadTelefono(pais):
     return ciudadTelefono
 
 def menu():
-    print("""
-                                Reporte de oficina
-          
-          1. obtener codigo y ciudad de la oficina.
-          2. obtener el la ciudad, telefono y oficinas de un pais en especifico.
+    while True:
+        print("""
+                                     ____                       _             _      
+                                    |  _ \ ___ _ __   ___  _ __| |_ ___    __| | ___ 
+                                    | |_) / _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ !
+                                    |  _ <  __/ |_) | (_) | |  | ||  __/ | (_| |  __/
+                                    |_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___|
+                                            __|_|     _                              
+                                     ___  / _(_) ___(_)_ __   __ _                  
+                                    / _ \| |_| |/ __| | '_ \ / _` |                 
+                                   | (_) |  _| | (__| | | | | (_| |                 
+                                    \___/|_| |_|\___|_|_| |_|\__,_|                 
+            
+            1. obtener codigo y ciudad de la oficina.
+            2. obtener el la ciudad, telefono y oficinas de un pais en especifico.
 
-""")
-    
-    menu()
+    """)
+        
+        menu()
 
-    opcion = int(input("seleccione una opcion de las presentes en el indice: "))
-    if opcion == 1: 
-        print(tabulate(getAllCodigoCiudad(),headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 2:
-        pais = input("Ingrese un pais: ")
-        print(tabulate(getAllCiudadTelefono(pais), headres ="keys", tablefmt = "rounded_grid"))
+        opcion = int(input("seleccione una opcion de las presentes en el indice: "))
+        if opcion == 1: 
+            print(tabulate(getAllCodigoCiudad(),headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 2:
+            pais = input("Ingrese un pais: ")
+            print(tabulate(getAllCiudadTelefono(pais), headres ="keys", tablefmt = "rounded_grid"))
+            break   
 

@@ -47,25 +47,36 @@ def getAllNAP():
     return noRepresentante
 
 def menu():
-   print("""
-                                    reporte de empleados
-         1. lista de datos del Jefe (nombre, apellidos, email y cargo) a partir de su codigo. 
-         2. Lista con el nombre, apellido e email del director general de la empresa.
-         3. lista con los nombres, apellidos y puestos de los empleados que no son Representantes de ventas.
-         
-""")
-   menu()
+   while True:
+    print("""
+                                                                   _             _         
+                                         _ __ ___ _ __   ___  _ __| |_ ___    __| | ___    
+                                        | '__/ _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ \   
+                                        | | |  __/ |_) | (_) | |  | ||  __/ | (_| |  __/   
+                                        |_|  \___| .__/ \___/|_|   \__\___|  \__,_|\___|   
+                                         ___ _ _|_|__  _ __ | | ___  __ _  __| | ___  ___ 
+                                        / _ \ '_ ` _ \| '_ \| |/ _ \/ _` |/ _` |/ _ \/ __|
+                                       |  __/ | | | | | |_) | |  __/ (_| | (_| | (_) \__ !
+                                        \___|_| |_| |_| .__/|_|\___|\__,_|\__,_|\___/|___/
+                                                    |_|   
+          
+            1. lista de datos del Jefe (nombre, apellidos, email y cargo) a partir de su codigo. 
+            2. Lista con el nombre, apellido e email del director general de la empresa.
+            3. lista con los nombres, apellidos y puestos de los empleados que no son Representantes de ventas.
+            
+    """)
+    menu()
 
-   opcion = int(input("Indique una de las tres opciones: "))
-   if opcion == 1:
-       codigoJefe = input("indique el codigo del jefe: ")
-       print(tabulate(getAllNamesEmailBoss(codigoJefe), headers = "keys", tablefmt = "rounded_grid"))
-   elif opcion == 2:
-      print(tabulate(getAllpuestoNombreApellidoEmailBoss(), headers = "keys", tablefmt = "rounded_grid")) 
-   elif opcion == 3:
-      print(tabulate(getAllNAP(), headers = "keys", tablefmt = "rounded_grid")) 
-      
-      
-      
-      
+    opcion = int(input("Indique una de las tres opciones: "))
+    if opcion == 1:
+        codigoJefe = input("indique el codigo del jefe: ")
+        print(tabulate(getAllNamesEmailBoss(codigoJefe), headers = "keys", tablefmt = "rounded_grid"))
+    elif opcion == 2:
+        print(tabulate(getAllpuestoNombreApellidoEmailBoss(), headers = "keys", tablefmt = "rounded_grid")) 
+    elif opcion == 3:
+        print(tabulate(getAllNAP(), headers = "keys", tablefmt = "rounded_grid")) 
+        break
+        
+        
+        
 

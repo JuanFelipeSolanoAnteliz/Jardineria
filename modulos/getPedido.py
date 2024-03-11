@@ -1,9 +1,10 @@
 import storage.pedido as ped
+from tabulate import tabulate
 #15
 def getAlEstado():
     estado = set ()
     for i, val in enumerate (ped.pedido):
-        estado.add(val.get("pedido"))
+        estado.add(val.get("codigo_pedido"))
         estado.add(val.get("estado"))    
     return estado     
 
@@ -118,6 +119,43 @@ def getAllpepdiosEnero():
     return pedidoEnero
 
 def menu():
-    print("""
-                                                        Reporte de pedidos
-""")
+    while True:
+        print("""
+                                             ____                       _             _      
+                                            |  _ \ ___ _ __   ___  _ __| |_ ___    __| | ___ 
+                                            | |_) / _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ !
+                                            |  _ <  __/ |_) | (_) | |  | ||  __/ | (_| |  __/
+                                            |_| \_\___| .__/_\___/|_|   \__\___|  \__,_|\___|
+                                             _ __   __|_|__| (_) __| | ___  ___              
+                                            | '_ \ / _ \/ _` | |/ _` |/ _ \/ __|             
+                                            | |_) |  __/ (_| | | (_| | (_) \__ \             
+                                            | .__/ \___|\__,_|_|\__,_|\___/|___/             
+                                            |_|                                      
+
+
+            1. Obtener el pedido y el codigo de pedido
+            2. Obtener los pedidos entregados fuera de fecha (atrasados)
+            3. obetener los pedidos entregados antes de la fecha esperada
+            4. Obtener el codigo, estado y fecha de entrega de lo spedidos rechazados en el año 2009
+            5. Obtener todos los pedidos entregados en el mes de enero 
+    """)
+        
+        opcion = int(input("Ingrese una opcion: "))
+
+        if opcion == 1:
+            print(tabulate(getAlEstado(), headers = "keys", tablefmt = "rounded_grid"))
+
+        elif opcion == 2:
+            print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers = "keys", tablefmt = "rounded_grid"))
+
+        elif opcion == 3: 
+            print(tabulate(getAllCodigoPedDosantesDiasFechaespera(), headers = "keys", tablefmt = "rounded_grid"))
+        
+        elif opcion == 4:
+            print(tabulate(getAllPedRechazado2009(), headers = "keys", tablefmt = "rounded_grid"))
+
+        elif opcion == 5: 
+            print(tabulate(getAllpepdiosEnero(), headers = "keys", tablefmt = "rounded_grid"))
+            break
+
+       

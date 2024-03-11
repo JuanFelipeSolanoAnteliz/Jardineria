@@ -41,7 +41,18 @@ def getAllFormaPago():
 def menu():
     while True:
         print(""" 
-                                Reporte de pagos
+                                 ____                       _             _      
+                                |  _ \ ___ _ __   ___  _ __| |_ ___    __| | ___ 
+                                | |_) / _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ !
+                                |  _ <  __/ |_) | (_) | |  | ||  __/ | (_| |  __/
+                                |_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___|
+                                 _ __   __ _|_|_ _  ___  ___                       
+                                | '_ \ / _` |/ _` |/ _ \/ __|                      
+                                | |_) | (_| | (_| | (_) \__ \                      
+                                | .__/ \__,_|\__, |\___/|___/                      
+                                |_|          |___/                        
+
+
             1. lista de pagos realizados con paypal en 2008
             2. lista de pagos realizados con paypal 
             3. obtener una lista de formas de pagos
@@ -57,5 +68,6 @@ def menu():
 
         elif opcion == 2:
             print(tabulate(getAllFormaPago(), headers = "keys", tablefmt = "rounded_grid" ))
+            break
         
 
