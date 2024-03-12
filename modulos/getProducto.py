@@ -12,5 +12,10 @@ def getAllstockPriceGama(gama,stock):
             condiciones.append(val)
             
     def price(val):
-        
+        return val.get("precio_venta")
     
+    condiciones.sort(key = price,reverse = True)
+    for i, val in enumerate(condiciones):
+        if(condiciones [i].get("descripcion")):
+            condiciones [i]["descripcion"] = f'{condiciones[i]["descripcion"][:5]}...'
+    return condiciones

@@ -1,5 +1,7 @@
 from tabulate import tabulate
 import storage.cliente as cli 
+import modulos.getEmpleados as em 
+import modulos.getPago as pa
 
 
 #1
@@ -127,6 +129,68 @@ def getAlldataByTlf(telefono):
     }
   return numtelefono.append(dataCli)
 
+#obtener un listado en donde se muestre el nombre de los clientes que son de madrid y que a su vez sus representantes de ventas tengan el codigo 11 y 38
+
+#OBTENER UN LISTADO CON EL NOMBRE DE CADA CLIENTE Y EL NOMBRE Y APELLIDO DE SU REPRESENTANTE DE VENTAS
+def getAllclientsYrepventa():
+  nombres = []
+  for val in cli.cliente:
+    for nemp in em.empleados:
+      if nemp.get("puesto") == "Representante Ventas" and nemp.get("codigo_empleado") ==  val.get("codigo_empleado_rep_ventas"):
+        nombrestbl = {
+
+          "nombre cliente": val.get("nombre_cliente"),
+          "Representante de ventas": nemp.get("nombre"),
+          "Apellido Rep. ventas": nemp.get("apellido1")
+
+        }
+  return nombres.append(nombrestbl)    
+
+
+
+
+
+
+
+
+
+#REVISAR MODULOOOOOO
+
+
+
+
+
+
+
+
+def getAllclientMadrid():
+  cliente = []
+  for val in cli.clientes:
+    for nemp in em.empleado:
+      if val.get("region") and val.get("ciudad") == "Madrid" and nemp.get("codigo_empleado") == val.get("codigo_empleado_rep_ventas"):
+        if 
+        madrid = {
+          "nombre cliente": val.get("nombre_cliente"),
+          "ciudad": val.get("region"),
+          "codigo representante de ventas": val.get("codigo_empleado_rep_ventas")
+
+        }
+
+  return cliente.append(madrid)
+
+#devolver unn listado en el cual se de el nombre de los clientes que hayan realizado un pago junto con el 
+      #nombre de sus representantes
+def getNameRepvents():
+  clientepago = set ()
+  for val in cli.clientes:
+    for juan in pa.pago:
+      for style in em.empleados:
+        if val.get("codigo_cliente") == juan.get("codigo_cliente"):
+           clientepago.add(val.get("nombre_cliente"),(juan.get("id_transaccion"),(style.get())))
+
+          
+        
+
   
     
 def menu():
@@ -136,27 +200,42 @@ def menu():
   while True:
 
     print("""
-           ____                       _             _      
-          |  _ \ ___ _ __   ___  _ __| |_ ___    __| | ___ 
-          | |_) / _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ !
-          |  _ <  __/ |_) | (_) | |  | ||  __/ | (_| |  __/
-          |_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___|
-            ___| (_)|_|_ _ __ | |_ ___  ___                
-          / __| | |/ _ \ '_ \| __/ _ \/ __|               
-          | (__| | |  __/ | | | ||  __/\__ \               
-          \___|_|_|\___|_| |_|\__\___||___/       
-      
+                         ____                       _             _      
+                        |  _ \ ___ _ __   ___  _ __| |_ ___    __| | ___ 
+                        | |_) / _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ !
+                        |  _ <  __/ |_) | (_) | |  | ||  __/ | (_| |  __/
+                        |_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___|
+                          ___| (_)|_|_ _ __ | |_ ___  ___                
+                         / __| | |/ _ \ '_ \| __/ _ \/ __|               
+                        | (__| | |  __/ | | | ||  __/\__ \               
+                         \___|_|_|\___|_| |_|\__\___||___/       
+                    
 
-    1. Obtener todos los clientes (nombre y código)
-    2. Obtener un cliente por el codigo de cliente (codigo y nombre)
-    3. Obtener la información de un cliente según el límite de crédito y la ciudad (ej: 3000.0 - San Francisco)
-    4. Obtener la información de los clientes Españoles
-    5. Obtener la información del cliente según las direcciones del cliente
-    6. Obtener codigo nombre, codigo portal y codigo de empleado por reporte de venta 
-      a partir del codigo postal 
-    7. Obtener nombre y region del cliente 
-    8. Obtener los datos del cliente a partir del numero de telefono  
-    0. Salir
+    
+          1. Obtener todos los clientes (nombre y código)
+    
+          2. Obtener un cliente por el codigo de cliente (codigo y nombre)
+    
+          3. Obtener la información de un cliente según el límite de crédito y la ciudad (ej: 3000.0 - San Francisco)
+    
+          4. Obtener la información de los clientes Españoles
+    
+          5. Obtener la información del cliente según las direcciones del cliente
+    
+          6. Obtener codigo nombre, codigo portal y codigo de empleado por reporte de venta 
+             a partir del codigo postal 
+    
+          7. Obtener nombre y region del cliente 
+    
+          8. Obtener los datos del cliente a partir del numero de telefono 
+
+          9. obtener un listado con todos los clientes que sen de madrid y el codigo de su representatnte de ventas
+             sea 11 o 38 
+    
+          10. obtener un listado con los nombres de todos los clientes junto con los nombres
+          y apellidos de su representatnte de ventas
+    
+          0. Salir
 
     """)
 
@@ -197,6 +276,10 @@ def menu():
       print("""
                                                 OPCION INVALIDA
     """)
+    elif opcion == 9:
+      print(tabulate(getAllclientMadrid(), headers = "keys", tablefmt = "rounded_grid" ))
+    elif opcion == 10:
+      print(tabulate(getAllclientsYrepventa(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 0:
       print("¡Hasta luego!")
       break
