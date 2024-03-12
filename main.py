@@ -5,6 +5,7 @@ import modulos.getOficina as of
 import modulos.getEmpleados as em 
 import modulos.getPedido as ped 
 import modulos.getPago as pa 
+import modulos.getProducto as pr
 
 if __name__ == "__main__":
 
@@ -40,6 +41,8 @@ if __name__ == "__main__":
                       ped.menu()
                 elif(opcion == 5):
                       pa.menu()
+                elif(opcion == 6):
+                      pr.menu()
                 elif(opcion == 0):
                       print("Vuelva pronto :D")
                       break
