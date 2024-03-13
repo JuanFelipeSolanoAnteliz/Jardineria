@@ -166,15 +166,15 @@ def getAllclientsYrepventa():
 def getAllclientMadrid():
   cliente = []
   for val in cli.clientes:
-    for nemp in em.empleado:
+    for nemp in em.empleados:
       if val.get("region") and val.get("ciudad") == "Madrid" and nemp.get("codigo_empleado") == val.get("codigo_empleado_rep_ventas"):
-        if 
-        madrid = {
-          "nombre cliente": val.get("nombre_cliente"),
-          "ciudad": val.get("region"),
-          "codigo representante de ventas": val.get("codigo_empleado_rep_ventas")
+          
+          madrid = {
+            "nombre cliente": val.get("nombre_cliente"),
+            "ciudad": val.get("region"),
+            "codigo representante de ventas": val.get("codigo_empleado_rep_ventas")
 
-        }
+          }
 
   return cliente.append(madrid)
 
@@ -187,8 +187,9 @@ def getNameRepvents():
       for style in em.empleados:
         if val.get("codigo_cliente") == juan.get("codigo_cliente"):
            clientepago.add(val.get("nombre_cliente"),(juan.get("id_transaccion"),(style.get())))
+  return clientepago
 
-          
+      
         
 
   
@@ -272,10 +273,7 @@ def menu():
     elif opcion == 8:
       telefono = int(input("Ingrese el numero de telefono del cliente: "))
       print(tabulate(getAlldataByTlf(telefono), headers="keys", tablefmt="rounded_grid"))
-    elif opcion > 8:
-      print("""
-                                                OPCION INVALIDA
-    """)
+    
     elif opcion == 9:
       print(tabulate(getAllclientMadrid(), headers = "keys", tablefmt = "rounded_grid" ))
     elif opcion == 10:

@@ -1,4 +1,4 @@
-producto = [
+[
     {
     
 
@@ -716,5 +716,5 @@ producto = [
         "precio_venta": 7,
         "precio_proveedor": 5
     }
-    #sigue limon 1 año injerto
+
 ]
