@@ -1,5 +1,7 @@
 import storage.empleado as em 
 from tabulate import tabulate
+import json 
+import requests
 
 #9
 def getAllNamesEmailBoss(codigo):

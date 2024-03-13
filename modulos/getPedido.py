@@ -1,4 +1,5 @@
-import storage.pedido as ped
+import json 
+import requests
 from tabulate import tabulate
 #15
 def getAlEstado():

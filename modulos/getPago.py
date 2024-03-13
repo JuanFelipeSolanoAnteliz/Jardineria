@@ -1,3 +1,5 @@
+import json 
+import requests
 import storage.pago as pa
 from tabulate import tabulate
 #14

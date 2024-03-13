@@ -1,4 +1,6 @@
-import storage.oficina as of
+import json 
+import requests
+
 from tabulate import tabulate
 
 #12 obtener codigo y ciudad de la oficina

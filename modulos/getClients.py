@@ -2,7 +2,8 @@ from tabulate import tabulate
 import storage.cliente as cli 
 import modulos.getEmpleados as em 
 import modulos.getPago as pa
-
+import json 
+import requests
 
 #1
 def getAllClientName():

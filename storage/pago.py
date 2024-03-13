@@ -1,6 +1,6 @@
 
 
-pago = [
+[
     {
         "codigo_cliente": 1,
         "forma_pago": "PayPal",
