@@ -29,3 +29,4 @@ def getAllstockPriceGama(gama,stock):
         if(condiciones [i].get("descripcion")):
             condiciones [i]["descripcion"] = f'{condiciones[i]["descripcion"][:5]}...'
     return condiciones
+m
