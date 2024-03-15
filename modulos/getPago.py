@@ -1,11 +1,18 @@
 import json 
 import requests
-import storage.pago as pa
+
 from tabulate import tabulate
+
+#json-server storage/pago.json -b 5504
+def getAlldatapag():
+    peticion = requests.get("http://172.16.104.17:5504")
+    data = peticion.json()
+    print(data)
+    
 #14
 def getAllPago08Paypal():
     formaPago = []
-    for val in pa.pago:
+    for val in getAlldatapag():
         año = val.get("fecha_pago")
         if val.get("forma_pago") == "PayPal":
             if año.startswith("2008"):
@@ -18,7 +25,7 @@ def getAllPago08Paypal():
 
 def getAllpagosPaypal():
     paypal = []
-    for val in pa.pagos:
+    for val in getAlldatapag():
         if val.get("forma_pago") == "paypal":
             datapagos = {
 
@@ -33,7 +40,7 @@ def getAllpagosPaypal():
 def getAllFormaPago():
     formaDePago =[]
     formaPagoRep = set()
-    for val in pa.pagos:
+    for val in getAlldatapag():
         if val.get("forma_pago") not in formaPagoRep:
             formaDePago.append({"forma_pago": val.get("forma_pago")})
             formaPagoRep.add(val.get("forma_pago"))
@@ -58,6 +65,7 @@ def menu():
             1. lista de pagos realizados con paypal en 2008
             2. lista de pagos realizados con paypal 
             3. obtener una lista de formas de pagos
+            0.rergesar
     """)
         
         opcion = int(input("Ingrese una opcion: "))
@@ -68,8 +76,15 @@ def menu():
         elif opcion == 2:
             print(tabulate(getAllpagosPaypal(), headers = "keys", tablefmt = "rounded_grid" ))
 
-        elif opcion == 2:
+        elif opcion == 3:
             print(tabulate(getAllFormaPago(), headers = "keys", tablefmt = "rounded_grid" ))
+            
+        elif opcion == 0:
+            print("regresando")
+            print("regresando.")
+            print("regresando..")
+            print("regresando...")
             break
+        
         
 

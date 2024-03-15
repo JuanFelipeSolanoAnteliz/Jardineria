@@ -11,8 +11,13 @@ def getProductoCode(codigo):
         if val.get("codigo_producto") == codigo:
             return [val] 
 
+
+
+#puerto json-server storage/producto.json -b 5502
+
+
 def getAllData():
-    peticion = requests.get("http://127.0.0.1:5000")
+    peticion = requests.get("hhttp://[::1]:5502")
     data = peticion.json
     print(data)
 
@@ -22,7 +27,7 @@ def getAllData():
 
 def getAllstockPriceGama(gama,stock):
     condiciones = []
-    for val in requests:
+    for val in getAllData():
         if val.get("gama") == gama and val.get("cantidad_en_stock") >= stock:
             condiciones.append(val)
             
@@ -34,4 +39,24 @@ def getAllstockPriceGama(gama,stock):
         if(condiciones [i].get("descripcion")):
             condiciones [i]["descripcion"] = f'{condiciones[i]["descripcion"][:5]}...'
     return condiciones
-m
+def menu():
+    while True:
+        print("""
+                                                        BIENBENIDO AL MENU DE PRODUCTOS
+                                        1.Obtener un producto porsu gama y numero de stock.
+                                        0.Regresar
+                                        
+                                        
+            
+            """)
+
+        opcion = int(input("Seleccione un un a de las dos opciones: "))
+        if opcion == 1:
+            print(tabulate(getAllstockPriceGama(),headers="keys", tablefmt ="rounded_grid"))
+        elif opcion == 0:
+            print("regresando")
+            print("regresando.")
+            print("regresando..")
+            print("regresando...")
+            break
+        

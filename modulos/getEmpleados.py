@@ -1,12 +1,16 @@
-import storage.empleado as em 
+
 from tabulate import tabulate
 import json 
 import requests
-
+#json-server storage/empleado.json -b 5506
+def getAlldataEm():
+    peticion = requests.get("http://172.16.104.17:5506")
+    data = peticion.json()
+    print(data)
 #9
 def getAllNamesEmailBoss(codigo):
     nameEmailBoss = []
-    for val in em.empleados:
+    for val in getAlldataEm():
         if (val.get("codigo_jefe") == codigo):
              nameEmailBoss.append(
                 {
@@ -22,7 +26,7 @@ def getAllNamesEmailBoss(codigo):
 #10
 def getAllpuestoNombreApellidoEmailBoss():
     directorGnrl = []
-    for val in em.empleados:
+    for val in getAlldataEm():
         if(val.get("codigo_jefe") == None ):   
          dataDirctGnrl = ({
 
@@ -37,7 +41,7 @@ def getAllpuestoNombreApellidoEmailBoss():
 #11
 def getAllNAP():
     noRepresentante = []
-    for val in em.empleados:
+    for val in getAlldataEm():
         if(val.get("puesto") != "Representante Ventas" ):
          noRepresentante.append({
             
@@ -65,6 +69,7 @@ def menu():
             1. lista de datos del Jefe (nombre, apellidos, email y cargo) a partir de su codigo. 
             2. Lista con el nombre, apellido e email del director general de la empresa.
             3. lista con los nombres, apellidos y puestos de los empleados que no son Representantes de ventas.
+            0.regresar
             
     """)
     menu()
@@ -77,8 +82,13 @@ def menu():
         print(tabulate(getAllpuestoNombreApellidoEmailBoss(), headers = "keys", tablefmt = "rounded_grid")) 
     elif opcion == 3:
         print(tabulate(getAllNAP(), headers = "keys", tablefmt = "rounded_grid")) 
-        break
-        
+    elif opcion == 0:
+            print("regresando")
+            print("regresando.")
+            print("regresando..")
+            print("regresando...")
+            break
+       
         
         
 

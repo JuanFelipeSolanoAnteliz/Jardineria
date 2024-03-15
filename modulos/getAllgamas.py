@@ -8,7 +8,3 @@ def getAllgama():
     return data
 
 
-def getAllNombre(): 
-    gamaNombre = []
-    for val in getAllgama:
-        

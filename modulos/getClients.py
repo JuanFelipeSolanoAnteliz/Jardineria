@@ -4,6 +4,11 @@ import modulos.getEmpleados as em
 import modulos.getPago as pa
 import json 
 import requests
+def defGetAllCli():
+  peticion = requests.get("http://172.16.104.17:5507")
+  data = peticion.json()
+  print(data)
+
 
 #1
 def getAllClientName():
@@ -18,7 +23,7 @@ def getAllClientName():
 #2 obtener la informacin de un cliente a partir del codigo de cliente 
 def getOneClientCode(codigo):
   codigClient = []
-  for val in cli.clientes:
+  for val in defGetAllCli():
     if(val.get("codigo_cliente") == codigo):
        nombreycodigo= {
           "codigo": val.get("codigo_cliente"),
@@ -30,7 +35,7 @@ def getOneClientCode(codigo):
 #3  obtener todos los datos de los clientes a partir de su limite de credito y la ciudad 
 def getAllClientCredCiudad(limiteCredit,ciudad ):
   clienteCredito = []
-  for val in cli.clientes:
+  for val in defGetAllCli():
     if (val.get("limite_credito") >= limiteCredit and val.get("ciudad") == ciudad):
       clienteCredito.append({
         
@@ -53,7 +58,7 @@ def getAllClientCredCiudad(limiteCredit,ciudad ):
 #4 obtener todos el nombre de los clientes esoañoles y su nacionalidad 
 def getAllSpainClient():
     nameSpain = []
-    for val in cli.clientes:
+    for val in defGetAllCli():
       if(val.get("pais") == "spain" ):
         dictName = ({
         "nombre_cliente": val.get("nombre_cliente"),
@@ -64,7 +69,7 @@ def getAllSpainClient():
 #que tiene cada cliente
 def getDireccion(direccion,direccion2):
   apellidoCli= []
-  for val in cli.clientes:
+  for val in defGetAllCli():
     if (val.get("linea_direccion1") == direccion) or (val.get("linea_direccion2")== direccion2):
       infMostrada = {
         
@@ -88,7 +93,7 @@ def getDireccion(direccion,direccion2):
 #6 obtener codigo nombre, codigo portal y codigo de empleado por reporte de venta 
 # a partir del codigo postal 
 def getCodigostal(codePostal):
-  for val in cli.clientes:
+  for val in defGetAllCli():
     if (val.get("codigo_postal") == codePostal) :
       return {
         "nombre": val.get("nombre_cliente"),
@@ -100,7 +105,7 @@ def getCodigostal(codePostal):
 #7 obtener nombre y region del cliente 
 def getRegionClients():
     regionCli = []
-    for val in cli.clientes:
+    for val in defGetAllCli():
         if val.get("region") is not None:
             regionCli.append({
                 "nombre": val.get("nombre_cliente"),
@@ -110,7 +115,7 @@ def getRegionClients():
 #8 obtener los datos del cliente a partir del numero de telefono      
 def getAlldataByTlf(telefono):
   numtelefono = []
-  for val in cli.clientes:
+  for val in defGetAllCli():
     if val.get("telefono") == telefono:
       dataCli = {
         "codigo": val.get("codigo_cliente"),
@@ -135,7 +140,7 @@ def getAlldataByTlf(telefono):
 #OBTENER UN LISTADO CON EL NOMBRE DE CADA CLIENTE Y EL NOMBRE Y APELLIDO DE SU REPRESENTANTE DE VENTAS
 def getAllclientsYrepventa():
   nombres = []
-  for val in cli.cliente:
+  for val in defGetAllCli():
     for nemp in em.empleados:
       if nemp.get("puesto") == "Representante Ventas" and nemp.get("codigo_empleado") ==  val.get("codigo_empleado_rep_ventas"):
         nombrestbl = {
@@ -166,7 +171,7 @@ def getAllclientsYrepventa():
 
 def getAllclientMadrid():
   cliente = []
-  for val in cli.clientes:
+  for val in defGetAllCli():
     for nemp in em.empleados:
       if val.get("region") and val.get("ciudad") == "Madrid" and nemp.get("codigo_empleado") == val.get("codigo_empleado_rep_ventas"):
           
@@ -183,7 +188,7 @@ def getAllclientMadrid():
       #nombre de sus representantes
 def getNameRepvents():
   clientepago = set ()
-  for val in cli.clientes:
+  for val in defGetAllCli():
     for juan in pa.pago:
       for style in em.empleados:
         if val.get("codigo_cliente") == juan.get("codigo_cliente"):
@@ -280,10 +285,12 @@ def menu():
     elif opcion == 10:
       print(tabulate(getAllclientsYrepventa(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 0:
-      print("¡Hasta luego!")
-      break
+            print("regresando")
+            print("regresando.")
+            print("regresando..")
+            print("regresando...")
+            break
 
-if __name__ == "__main__":
-  menu()
+
 
     

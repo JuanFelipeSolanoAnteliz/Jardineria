@@ -2,11 +2,18 @@ import json
 import requests
 
 from tabulate import tabulate
+#puerto: json-server storage/oficina.json -b 5505
 
+def getAlldataOf():
+    peticion = requests.get("http://172.16.104.17:5505")
+    data= peticion.json()
+    print(data)
 #12 obtener codigo y ciudad de la oficina
+
+ 
 def getAllCodigoCiudad():
     codigoCiudad = []
-    for val in of.oficina:
+    for val in getAlldataOf():
         codigoCiudad.append({
             "codigo": val.get("codigo_oficina"),
             "ciudad": val.get("ciudad")
@@ -15,7 +22,7 @@ def getAllCodigoCiudad():
 #13 obtener el la ciudad, telefono y oficinas de un pais en especifico
 def getAllCiudadTelefono(pais):
     ciudadTelefono = []
-    for val in of.oficina:
+    for val in getAlldataOf():
         if (val.get("pais") == pais):
             ciudadTelefono.append({
                 "ciudad": val.get("ciudad"),
@@ -41,6 +48,7 @@ def menu():
             
             1. obtener codigo y ciudad de la oficina.
             2. obtener el la ciudad, telefono y oficinas de un pais en especifico.
+            0.regresar
 
     """)
         
@@ -52,5 +60,11 @@ def menu():
         elif opcion == 2:
             pais = input("Ingrese un pais: ")
             print(tabulate(getAllCiudadTelefono(pais), headres ="keys", tablefmt = "rounded_grid"))
-            break   
+        elif opcion == 0:
+            print("regresando")
+            print("regresando.")
+            print("regresando..")
+            print("regresando...")
+            break
+               
 

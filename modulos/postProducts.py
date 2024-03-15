@@ -4,7 +4,8 @@ import modulos.getAllgamas as gG
 import os
 import re 
 import getProducto
-import tabulate  as tabulate 
+import postProducts
+from tabulate import tabulate 
 #    producto = {
         
 #        "codigo_producto": int(input("ingrese un codigo para su producto: ")),
@@ -24,21 +25,31 @@ def getProductoCRUD():
         #expresion regular qu evalide cadenas y letras en mayusucula
            if (not producto.get("codigo_producto")):
                codigo = input( "Ingrese un codigo para el producto:  ")
-               if(re.martch(r'^[A-Z]{2}-[0-9]{3}$',codigo)is not None):
+               if(re.match(r'^[A-Z]{2}-[0-9]{3}$',codigo)is not None):
                    data = gG.getProductoCode(codigo)
                    if data:
                        print(tabulate(data, headers = "keys", tablefmt = "rounded_grid"))
-                   raise Exception("El codigo ya existe: ")
-               else: 
-                   producto ["codigo_producto"] = codigo
-                   
-            else: 
-                raise Exception("El codigo del producto no cumple con el estandar")
-        #expresion regular que valide cada cadena solo letars que las primeras dos sean mayusculas
-        if(not producto.get("nombre")):
-            nombre = input("ingresa el codigo ")
-            if(re.match(r'^[A-Z][0-9]$'\s*))):
+                       raise Exception("El codigo ya existe: ")
+                   else: 
+                        producto ["codigo_producto"] = codigo
                         
+               else: 
+                    raise Exception("El codigo del producto no cumple con el estandar")
+                #expresion regular que valide cada cadena solo letars que las primeras dos sean mayusculas
+           if(not producto.get("nombre")):
+                nombre = input("ingresa el codigo ")
+                if(re.match(r'^[A-Z][0-9]$*\s*)+$',nombre)is not None):
+                    producto ["nombre"] = nombre
+                    break
+                else:
+                    raise Exception("El nombre no cumple con las especificaciones: ")
+                    
+        except Exception as error:
+                    print(error)
+    
+    print(producto)
+                            
+                                
 
     peticion = requests.post("http://127.0.0.1:5000", data=json.dumps(producto))
     rest = peticion.json()
@@ -51,4 +62,19 @@ def menu():
         print("""
                             *****BIENVENIDO AL ADMINISTRADOR DE PRODUCTOS***** 
                             
+                    1. Añadir datos para un nuevo producto.
+                    0. regresar
+                    
+                        
 """)    
+        
+        opcion = int(input("""selccione la opcion numero uno (1) para entrar al 
+                           administrador de productos y añadir uno nuevo:  """))
+        if opcion == 1:
+            print(tabulate(getProductoCRUD(), headers = "keys", tablefmt= "rounded_ grid" ))
+        elif opcion == 0:
+            print("regresando")
+            print("regresando.")
+            print("regresando..")
+            print("regresando...")
+            break

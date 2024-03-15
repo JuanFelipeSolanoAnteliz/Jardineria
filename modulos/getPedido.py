@@ -1,12 +1,18 @@
 import json 
 import requests
 from tabulate import tabulate
+import requests
+
+def getAlldata():
+    peticion = requests.get("http://172.16.104.17:5503")
+    data =peticion.json 
+    print(data)
 #15
 def getAlEstado():
     estado = set ()
-    for i, val in enumerate (ped.pedido):
-        estado.add(val.get("codigo_pedido"))
-        estado.add(val.get("estado"))    
+    for i, val in enumerate: getAlldata()
+    estado.add(val.get("codigo_pedido"))
+    estado.add(val.get("estado"))    
     return estado     
 
 #from datetime import datetime
@@ -54,7 +60,7 @@ from datetime import datetime
 #15
 def getAllPedidosEntregadosAtrasadosDeTiempo():
     pedidosEntregado = list()
-    for val in ped.pedido:
+    for val in getAlldata():
         if (val.get("estado") == "Entregado" and val.get("fecha_entrega") == None):
             val["fecha_entrega"] = val.get("fecha_esperada")
         if (val.get("estado") == "Entregado"):
@@ -75,7 +81,7 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
 def getAllCodigoPedDosantesDiasFechaespera():
     pedidoAdelantado = list()
 
-    for val in ped.pedido:
+    for val in getAlldata():
         if (val.get("estado") == "Entregado" and val.get("fecha_entrega") == None):
             val["fecha_entrega"] = val.get("fecha_esperada")
         if (val.get("estado") == "Entregado"):
@@ -95,7 +101,7 @@ def getAllCodigoPedDosantesDiasFechaespera():
 #17
 def getAllPedRechazado2009():
     pedidoRechazado = []
-    for val in ped.pedido:
+    for val in getAlldata():
         año = val.get("fecha_entrega")
         if (val.get("estado") == "Rechazado" and val.get("fecha_entrega") is not None): 
             if año.startswith("2009"):
@@ -109,7 +115,7 @@ def getAllPedRechazado2009():
 #18
 def getAllpepdiosEnero():
     pedidoEnero = []
-    for val in ped.pedido:
+    for val in getAlldata():
       
         if val.get("fecha_entrega") != None and val.get("estado") == "Entregado":
             fechaentrega = "/".join(val.get("fecha_entrega").split("-")[::-1])
@@ -139,6 +145,7 @@ def menu():
             3. obetener los pedidos entregados antes de la fecha esperada
             4. Obtener el codigo, estado y fecha de entrega de lo spedidos rechazados en el año 2009
             5. Obtener todos los pedidos entregados en el mes de enero 
+            0. regresar
     """)
         
         opcion = int(input("Ingrese una opcion: "))
@@ -157,6 +164,14 @@ def menu():
 
         elif opcion == 5: 
             print(tabulate(getAllpepdiosEnero(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 0:
+            print("regresando")
+            print("regresando.")
+            print("regresando..")
+            print("regresando...")
+            
+        
+    
             break
 
        
