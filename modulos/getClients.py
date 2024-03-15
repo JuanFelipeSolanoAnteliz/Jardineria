@@ -1,5 +1,5 @@
 from tabulate import tabulate
-import storage.cliente as cli 
+#import storage.cliente as cli 
 import modulos.getEmpleados as em 
 import modulos.getPago as pa
 import json 
@@ -8,7 +8,7 @@ import requests
 #1
 def getAllClientName():
   clientName = list()
-  for val in cli.clientes:
+  for val in requests.post():
     CodigoName = dict({
       "codigo": val.get("codigo_cliente"),
       "nombre": val.get("nombre_cliente")

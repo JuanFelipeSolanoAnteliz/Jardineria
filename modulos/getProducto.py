@@ -6,6 +6,11 @@ import modulos.getAllgamas as gG
 
 from tabulate import tabulate
 
+def getProductoCode(codigo):
+    for val in getAllData():
+        if val.get("codigo_producto") == codigo:
+            return [val] 
+
 def getAllData():
     peticion = requests.get("http://127.0.0.1:5000")
     data = peticion.json
