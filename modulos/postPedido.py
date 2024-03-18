@@ -4,6 +4,7 @@ import requests
 import os
 import re
 from tabulate import tabulate
+import modulos.getClients as gC
 
 
 
@@ -57,7 +58,7 @@ def getPedidoCRUD():
             if not(pedido.get("estado")):
                 estado = input("Ingrese el estadodel producto: ")
                 if re.match(r'^[A-Z][a-z]+$', estado ) is not None:
-                     estadoped = gP.getAlEstado(estado):
+                     estadoped = gP.getAlEstado(estado)
                      if estadoped:
                           pedido["estado"] = estado
                      else:
@@ -69,29 +70,38 @@ def getPedidoCRUD():
 
             if not (pedido.get("codigo_cliente")):
                  codigocli = input( "Ingrese el codigo de cliente: ")
-                 if 
-                     
-
-
+                 if re.match(r'^[0-9]+$',codigocli) is not None:
+                     codigo = int(codigo)
+                     codigo = gC.getOneClientCode(codigo)
+                     if codigocli:
+                         codigocli ["codigo_cliente"] = codigo 
+                         print(tabulate(codigocli, headers = "keys", tablefmt = "rounded_grid"))
+                     raise Exception("codigo invalido, recuerde que solo puede usar numeros enteros.")
                     
         except Exception as error:
                     print(error)
-                      
-
-                
-
-
-            
 
 
 
-   
-    
-
-
-
-        peticion = requests.post("http://172.16.104.17:5503",  data = json = dumps(pedido))
+        peticion = requests.post("http://172.16.104.17:5503",  data = json.dumps(pedido))
         rest = peticion.json()
         rest ["Mensaje"] = "pedido guardado"
         return [rest]
+    
+def menu():
+     while True:
+        os.system("clear")
+        print("""
+                                              ******BIENVENIDO AL ADMINISTRADOR DE PEIDOS******
+                                              1. Registrar un nuevo pedido.
+                                              
+                                              0. salir
+                                              
+              """)
+        opcion = int(input("seleccione una opcion"))
+        if opcion == 1 : 
+            print(tabulate(getPedidoCRUD(), headers = "keys", tablefmt= "rounded_grid" ))
+        if opcion == 0:
+            break
+        
 

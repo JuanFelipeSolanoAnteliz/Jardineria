@@ -17,7 +17,7 @@ def getProductoCode(codigo):
 
 
 def getAllData():
-    peticion = requests.get("hhttp://[::1]:5502")
+    peticion = requests.get("http://127.0.0.1:5502")
     data = peticion.json
     print(data)
 

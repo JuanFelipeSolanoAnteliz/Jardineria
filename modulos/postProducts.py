@@ -3,7 +3,7 @@ import requests
 import modulos.getAllgamas as gG
 import os
 import re 
-import getProducto
+import getProducto as gP
 import postProducts
 from tabulate import tabulate 
 #    producto = {
@@ -104,6 +104,8 @@ def getProductoCRUD():
                     print(error)
     
     print(producto)
+    
+    
                             
                                 
 
@@ -112,6 +114,28 @@ def getProductoCRUD():
     rest["Mensaje"] = "Producto guardado"
     return [rest]
 
+def deleteProducto(id):
+     data  = gP.getProductoCode(id)
+     if(len(data)):
+          peticion = requests.delete(f"hhttp://[::1]:5502/productos/{id}")
+          if (peticion.status_code == 204):
+               data.append({"message": "producto eliminado correcto"})
+               return {
+                    "body": data,
+                    "id": id 
+               }
+          else: 
+               
+               
+               return {
+                    
+                    "body": [{
+                    "body": data,
+                    "id": id 
+                    }],
+                    "status": 400
+                    
+               }
 def menu():
     while True:
         os.system("clear")
