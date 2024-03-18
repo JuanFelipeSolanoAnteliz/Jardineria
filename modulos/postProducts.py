@@ -25,7 +25,7 @@ def getProductoCRUD():
         #expresion regular qu evalide cadenas y letras en mayusucula
            if (not producto.get("codigo_producto")):
                codigo = input( "Ingrese un codigo para el producto:  ")
-               if(re.match(r'^[A-Z]{2}-[0-9]{3}$',codigo)is not None):
+               if(re.match(r'^[a-zA-Z]{2}-[0-9]{3}$',codigo)is not None):
                    data = gG.getProductoCode(codigo)
                    if data:
                        print(tabulate(data, headers = "keys", tablefmt = "rounded_grid"))
