@@ -54,9 +54,7 @@ def menu():
         if opcion == 1:
             print(tabulate(getAllstockPriceGama(),headers="keys", tablefmt ="rounded_grid"))
         elif opcion == 0:
-            print("regresando")
-            print("regresando.")
-            print("regresando..")
+            
             print("regresando...")
             break
         

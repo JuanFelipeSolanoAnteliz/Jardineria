@@ -285,9 +285,7 @@ def menu():
     elif opcion == 10:
       print(tabulate(getAllclientsYrepventa(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 0:
-            print("regresando")
-            print("regresando.")
-            print("regresando..")
+           
             print("regresando...")
             break
 

@@ -83,9 +83,7 @@ def menu():
     elif opcion == 3:
         print(tabulate(getAllNAP(), headers = "keys", tablefmt = "rounded_grid")) 
     elif opcion == 0:
-            print("regresando")
-            print("regresando.")
-            print("regresando..")
+            
             print("regresando...")
             break
        

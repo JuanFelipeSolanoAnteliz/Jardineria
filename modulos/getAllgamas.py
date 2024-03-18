@@ -8,3 +8,8 @@ def getAllgama():
     return data
 
 
+def getAllNombre(gama):
+    for val in getAllgama():
+        if val.get("gama") == gama:
+            return [val]
+        

@@ -42,8 +42,64 @@ def getProductoCRUD():
                     producto ["nombre"] = nombre
                     break
                 else:
-                    raise Exception("El nombre no cumple con las especificaciones: ")
-                    
+                    raise Exception("El nombre no cumple con las especificaciones ")
+            
+           if(not producto.get("gama")):
+                gama = input("Ingrese una gama para su producto: ")
+                if(re.match(r'^[A-Z][a-zA-Z0-9\s.]*$',nombre)) is not None:
+                     vgama = gG.getAllNombre(gama)
+                     if vgama:
+                          producto["gama"]= gama 
+                          raise Exception ("gamas validas: Herbaceas, Herramientas, Aromáticas, Frutales, Ornamentales")
+                     
+           if(not producto.get("dimensiones")):
+                dimensiones = input("Ingresa las dimensiones del producto: ")
+                if re.match(r'^\d+-\d+$', dimensiones)is not None: 
+                     producto ["dimensiones"]== dimensiones
+                else:
+                     raise Exception ("Dimensiones no vaidas. forma correcta: numero-numero ")
+            
+           if not producto.get("proveedor"):
+                proveedor = input("Ingrese el nombre nombre del proveedor del producto: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\S]+$', proveedor ) is not None:
+                     producto ["proveedor"] = proveedor
+                else:                                      
+                    raise Exception (" El proveedor ingresado no es valido, recuerde que debe escribir iniciando con mayusculas.")
+            
+           if not producto.get("descripcion"): 
+                descripcion =input ("Ingrese una descrpcion para el producto: ")
+
+                producto ["descripcion"] = descripcion
+           
+           if not producto.get("cantidad_en_stock"):
+                stock = input("Ingrese la cantidad de stock del producto: ")
+                if re.macth(r'^[0-9]+$', stock ) is not None:
+                     stock = int(stock)
+
+                     producto ["cantidad_en_stock"] = stock
+                else:                                      
+                    raise Exception ("cantidad invalida, recuerde que solo puede indicar nuemros enteros.")
+
+                
+           if not producto.gte("precio_venta") :
+                precio = input("Ingrese el preicio de venta del producto: ")
+                if re.match(r'^[0-9]+$',precio) is not None:
+                     precio = int(precio)
+                     producto ["precio_venta"] = precio
+                else:                                      
+                    raise Exception("precio invalido, recuerde que solo puede indicar nuemros enteros.")
+
+
+
+           if not producto.get("precio_proveedor"):
+                pproveedor = input("Ingrese el precio de proveedor del producto: ")
+                if re.match(r'^[0-9]+$',pproveedor) is not None:
+                     proveedor = int(pproveedor)
+                     producto ["precio_proveedor"] = proveedor
+            
+                else:                                      
+                    raise Exception("precio invalido, recuerde que solo puede indicar nuemros enteros.")
+                     
         except Exception as error:
                     print(error)
     
@@ -73,8 +129,6 @@ def menu():
         if opcion == 1:
             print(tabulate(getProductoCRUD(), headers = "keys", tablefmt= "rounded_ grid" ))
         elif opcion == 0:
-            print("regresando")
-            print("regresando.")
-            print("regresando..")
+        
             print("regresando...")
             break
