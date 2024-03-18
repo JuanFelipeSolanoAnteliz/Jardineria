@@ -37,7 +37,7 @@ def getProductoCRUD():
                     raise Exception("El codigo del producto no cumple con el estandar")
                 #expresion regular que valide cada cadena solo letars que las primeras dos sean mayusculas
            if(not producto.get("nombre")):
-                nombre = input("ingresa el codigo ")
+                nombre = input("ingresa el nombre: ")
                 if(re.match(r'^[A-Z][0-9]$*\s*)+$',nombre)is not None):
                     producto ["nombre"] = nombre
                     break

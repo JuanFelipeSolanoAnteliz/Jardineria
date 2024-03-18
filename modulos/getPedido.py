@@ -7,6 +7,13 @@ def getAlldata():
     peticion = requests.get("http://172.16.104.17:5503")
     data =peticion.json 
     print(data)
+
+def getCodigoPedid(codigo):
+    
+    for val in getAlldata():
+        if val.get("codigo_pedido") == codigo:
+            return [val]
+     
 #15
 def getAlEstado():
     estado = set ()

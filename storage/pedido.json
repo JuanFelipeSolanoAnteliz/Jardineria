@@ -67,7 +67,7 @@
         "codigo_pedido": 11,
         "fecha_pedido": "2009-01-20",
         "fecha_esperada": "2009-01-27",
-        "fecha_entrega": null,
+        "fecha_entregafecha_entrega": null,
         "estado": "Pendiente",
         "comentario": "El cliente requiere que el pedido se le entregue de 16:00h a 22:00h",
         "codigo_cliente": 1
