@@ -4,6 +4,16 @@ import requests
 from tabulate import tabulate
 #puerto: json-server storage/oficina.json -b 5505
 
+def getAllcodeOfi():
+    codigof = []
+    for val in getAlldataOf():
+        codigof.append({
+            
+        "codigo de oficina": val.get("codigo_oficina")
+        })
+    return codigof
+    
+    
 def getAlldataOf():
     peticion = requests.get("http://172.16.104.17:5505")
     data= peticion.json()

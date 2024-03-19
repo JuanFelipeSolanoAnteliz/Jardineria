@@ -83,7 +83,7 @@ def getPedidoCRUD():
 
 
 
-        peticion = requests.post("http://172.16.104.17:5503",  data = json.dumps(pedido))
+        peticion = requests.post("http://172.16.104.17:5504",  data = json.dumps(pedido,indent=4).encode("UTF-8"))
         rest = peticion.json()
         rest ["Mensaje"] = "pedido guardado"
         return [rest]

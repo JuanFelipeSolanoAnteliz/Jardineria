@@ -56,6 +56,12 @@ def getpagoCRUD():
         except Exception as error:
                     print(error)
                     
+                    
+        peticion = requests.post("http://172.16.104.17:5503",  data = json.dumps(pago,indent=4).encode("UTF-8"))
+        rest = peticion.json()
+        rest ["Mensaje"] = "pedido guardado"
+        return [rest]
+            
 def menu():
     while True:
         

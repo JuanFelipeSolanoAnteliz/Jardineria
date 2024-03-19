@@ -2,6 +2,15 @@
 from tabulate import tabulate
 import json 
 import requests
+def puetsoemp(puesto):
+    for val in getAlldataEm():
+        if val.get("puesto") == puesto:
+            return [val]
+            
+def getEmpleadoCodigo(codigo):
+    for val in getAlldataEm():
+        if val.get("codigo_empleado") == codigo:
+            return [val]
 #json-server storage/empleado.json -b 5506
 def getAlldataEm():
     peticion = requests.get("http://172.16.104.17:5506")

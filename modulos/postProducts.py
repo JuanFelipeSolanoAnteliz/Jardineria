@@ -109,7 +109,7 @@ def getProductoCRUD():
                             
                                 
 
-    peticion = requests.post("http://127.0.0.1:5000", data=json.dumps(producto))
+    peticion = requests.post("http://127.0.0.1:5000", data=json.dumps(producto,indent=4).encode("UTF-8"))
     rest = peticion.json()
     rest["Mensaje"] = "Producto guardado"
     return [rest]
