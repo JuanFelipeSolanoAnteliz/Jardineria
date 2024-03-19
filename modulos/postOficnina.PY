@@ -29,6 +29,42 @@ def postOficina():
                     oficina["pais"] = pais
                 else:
                     raise Exception("el pais ingresado no es valido, por favor indicar el nombre iniciando con mayuscula.")
+            if not oficina.get("region"):
+                region = input("Ingrese la region de la oficina")
+                if re.macth(r'^[A-Z][a-zA-Z0-9-\s]*$', region) is not None:
+                    oficina ["region"] = region
+                else: 
+                    raise Exception("Region invalida, recuerde usar unicamente letras o guiones (-)")
+            if not oficina.get("codigo_postal"):
+                postal = input("Ingrese el codigo postal")
+                if re.match(r'^[0-9]+$',postal) is not None:
+                    oficina ["codigo_postal"] = int(postal)
+                else:
+                    raise Exception("Codigo no valido, recuerde usar unicamente numeros")
+            if not oficina.get("telefono"):
+                telefono = input("""Ingrese un numero telefonico seguido de su indicador de region o prefijo 
+                                 telefonico. ( ej: +44 20 78772041 )""")
+                if re. match(r'^⁺\d{1,3}\s\d{1,3}\s\d{4,10}$', telefono) is not None:
+                    oficina ["telefeono"] = telefono
+                else: 
+                    raise Exception("numero telefonico invalido, usar solo numerose indicar los respectivos espacios ")
+            if not oficina.get("linea_direccion1"):
+                direccion1 = input("Ingrese la direccion de la oficna")
+                oficina ["linea_direccion1"] = direccion1
+
+            if not oficina.get("linea_direccion2"):
+
+                direccion2 = input("Ingrese una segunda direccion: ")
+                oficina ["linea_direccion2"] = direccion2
+            if not oficina.get("id"):
+                id = input("Ingrese un ID para su producto: ")
+                if re.match(r'^\d',id) is not None:
+                    oficina ["id"] = id
+
+            
+                
+        
+
                 
                 
             

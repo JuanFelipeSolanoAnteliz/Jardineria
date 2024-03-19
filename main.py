@@ -67,18 +67,31 @@ if __name__ == "__main__":
                       break
 
 
-#import sys
+import sys
 
-#for nombre, objeto in sys.modules.items():
-#    if nombre.startswith("modulos"):
-#        modulo = getattr(objeto,"__name__", None)
-#        if(modulo != "modules"):
-#            file = modulo.split("get")[-1]
-#            print(modulo)
+for nombre, objeto in sys.modules.items():
+   if nombre.startswith("modulos"):
+       modulo = getattr(objeto,"__name__", None)
+       if(modulo != "modules"):
+           file = modulo.split("get")[-1]
+           print(modulo)
 
-#print(tabulate(pa.getAllPago08Paypal(),tablefmt = 'rounded_grid'))
+print(tabulate(pa.getAllPago08Paypal(),tablefmt = 'rounded_grid'))
 
-#data = ped.getAllPedidosEntregAtraDeTiemp()
-#print(data)
+data = ped.getAllPedidosEntregAtraDeTiemp()
+print(data)
 
-#recuerde siempre poner autoguardado o dar crt+s
+
+import json 
+
+with open("storage/cliente.json", "r") as f:
+    fichero = f.read()
+    data = json.loads(fichero)
+    for i, val in enumerate(data):
+        data[i]["id"] = (i+1)
+    data = json.dumps(data, indent=4).encode("utf-8")
+    with open("storage/cliente.json", "wb+") as f1:
+        f1.write(data)
+        f1.close()
+      
+"http://154.38.171.54:5001"

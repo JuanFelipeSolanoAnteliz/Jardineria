@@ -4,8 +4,7 @@
         "codigo_productos": "",
         "cantidad": 0,
         "preio_unidad": 1.0,
-        "numerp_linea": 0
+        "numerp_linea": 0,
+        "id": 1
     }
 ]
-
-
