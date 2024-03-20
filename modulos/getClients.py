@@ -17,7 +17,7 @@ def getcodeClie(codigo):
 
 #1
 def getAllClientName():
-  clientName = list()
+  clientName = []
   for val in requests.post():
     CodigoName = dict({
       "codigo": val.get("codigo_cliente"),
@@ -42,7 +42,7 @@ def getAllClientCredCiudad(limiteCredit,ciudad ):
   clienteCredito = []
   for val in defGetAllCli():
     if (val.get("limite_credito") >= limiteCredit and val.get("ciudad") == ciudad):
-      clienteCredito.append({
+      return clienteCredito.append({
         
         "codigo": val.get("codigo_cliente"),
         "nombre": val.get("nombre_cliente"),
@@ -59,7 +59,7 @@ def getAllClientCredCiudad(limiteCredit,ciudad ):
         "reporte_ventas_clientes": val.get("codigo_empleado_rep_ventas"),
         "limite_credito": val.get("limite_credito")  
       })
-  return clienteCredito
+  
 #4 obtener todos el nombre de los clientes esoañoles y su nacionalidad 
 def getAllSpainClient():
     nameSpain = []
@@ -112,11 +112,11 @@ def getRegionClients():
     regionCli = []
     for val in defGetAllCli():
         if val.get("region") is not None:
-            regionCli.append({
+          return regionCli.append({
                 "nombre": val.get("nombre_cliente"),
                 "region": val.get("region")
             })
-    return regionCli
+    
 #8 obtener los datos del cliente a partir del numero de telefono      
 def getAlldataByTlf(telefono):
   numtelefono = []

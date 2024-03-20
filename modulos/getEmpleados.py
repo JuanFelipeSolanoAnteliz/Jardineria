@@ -21,7 +21,7 @@ def getAllNamesEmailBoss(codigo):
     nameEmailBoss = []
     for val in getAlldataEm():
         if (val.get("codigo_jefe") == codigo):
-             nameEmailBoss.append(
+             return nameEmailBoss  .append(
                 {
 
                 "nombre": val.get("nombre"),
@@ -30,14 +30,14 @@ def getAllNamesEmailBoss(codigo):
                 "jefe": val.get("codigo_jefe")
             }
             )
-    return nameEmailBoss    
+      
 
 #10
 def getAllpuestoNombreApellidoEmailBoss():
     directorGnrl = []
     for val in getAlldataEm():
-        if(val.get("codigo_jefe") == None ):   
-         dataDirctGnrl = ({
+        if(val.get("codigo_jefe") is None ):   
+         return directorGnrl.append({
 
             "puesto": val.get("puesto"),
             "nombre": val.get("nombre"),
@@ -46,20 +46,20 @@ def getAllpuestoNombreApellidoEmailBoss():
 
         })
 
-    return directorGnrl.append(dataDirctGnrl)
+    
 #11
 def getAllNAP():
     noRepresentante = []
     for val in getAlldataEm():
         if(val.get("puesto") != "Representante Ventas" ):
-         noRepresentante.append({
+         return noRepresentante.append({
             
             "puesto": val.get("puesto"),
             "nombre": val.get("nombre"),
             "apellidos":f'{val.get("apellido1")} {val.get("apellido2")}'
          })
 
-    return noRepresentante
+    
 
 def menu():
    while True:
@@ -81,7 +81,7 @@ def menu():
             0.regresar
             
     """)
-    menu()
+    
 
     opcion = int(input("Indique una de las tres opciones: "))
     if opcion == 1:

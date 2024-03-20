@@ -7,11 +7,10 @@ from tabulate import tabulate
 def getAllcodeOfi():
     codigof = []
     for val in getAlldataOf():
-        codigof.append({
+        return codigof.append({
             
         "codigo de oficina": val.get("codigo_oficina")
         })
-    return codigof
     
     
 def getAlldataOf():
@@ -24,23 +23,23 @@ def getAlldataOf():
 def getAllCodigoCiudad():
     codigoCiudad = []
     for val in getAlldataOf():
-        codigoCiudad.append({
+        return codigoCiudad.append({
             "codigo": val.get("codigo_oficina"),
             "ciudad": val.get("ciudad")
         })
-    return codigoCiudad
+    
 #13 obtener el la ciudad, telefono y oficinas de un pais en especifico
 def getAllCiudadTelefono(pais):
     ciudadTelefono = []
     for val in getAlldataOf():
         if (val.get("pais") == pais):
-            ciudadTelefono.append({
+            return ciudadTelefono.append({
                 "ciudad": val.get("ciudad"),
                 "telefono": val.get("telefono"),
                 "oficinas" : val.get("cpodigo_oficina"),
                 "pais" : val.get("pais") 
             })
-    return ciudadTelefono
+    
 
 def menu():
     while True:
@@ -62,17 +61,18 @@ def menu():
 
     """)
         
-        menu()
+        
 
         opcion = int(input("seleccione una opcion de las presentes en el indice: "))
-        if opcion == 1: 
+        if opcion == 0: 
+            break
+        elif opcion == 1: 
             print(tabulate(getAllCodigoCiudad(),headers = "keys", tablefmt = "rounded_grid"))
         elif opcion == 2:
             pais = input("Ingrese un pais: ")
             print(tabulate(getAllCiudadTelefono(pais), headres ="keys", tablefmt = "rounded_grid"))
-        elif opcion == 0:
+        
             
-            print("regresando...")
             break
                
 

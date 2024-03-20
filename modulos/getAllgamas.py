@@ -3,9 +3,9 @@ import requests
 
 def getAllgama():
     peticion = requests. get("http://127.0.0.1:5001")
-    data = peticion.json()
+    peticion.json()
 
-    return data
+    return peticion.json()
 
 
 def getAllNombre(gama):

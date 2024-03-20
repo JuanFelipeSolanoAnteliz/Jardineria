@@ -1,3 +1,5 @@
+
+
 import os
 #la libreria OS se importa en cada modulo debajo del "True del While en cada"
 #from tabulate import tabulate
@@ -8,12 +10,21 @@ import modulos.getEmpleados as em
 import modulos.getPedido as ped 
 import modulos.getPago as pa 
 import modulos.getProducto as pr
+import modulos.postProducts as postPr 
 
 def menuProducto():
       while True: 
             os.system("clear")
             print("""
-                                          ********* BIENVENIDO AL MENU  *********
+                                                                             _                            _            _            
+                                  | |                          | |          | |           
+  _ __ ___   ___ _ __  _   _    __| | ___   _ __  _ __ ___   __| |_   _  ___| |_ ___  ___ 
+ | '_ ` _ \ / _ \ '_ \| | | |  / _` |/ _ \ | '_ \| '__/ _ \ / _` | | | |/ __| __/ _ \/ __|
+ | | | | | |  __/ | | | |_| | | (_| |  __/ | |_) | | | (_) | (_| | |_| | (__| || (_) \__ \
+ |_| |_| |_|\___|_| |_|\__,_|  \__,_|\___| | .__/|_|  \___/ \__,_|\__,_|\___|\__\___/|___/
+                                           | |                                            
+                                           |_|
+                  
                   1. Menu de reportes de los productos.
                   2. Actualizar,añadir o eliminar productos.
                   
@@ -23,11 +34,19 @@ def menuProducto():
             
             opcion = int(input("Ingrese una de las opciones: "))
             if opcion == 1:
-                  print (tabulate())
+                  pr.menu()
+            elif opcion == 2:
+                 postPr.menu()
+                 
+def menuPedido():
+      while True: 
+            os.system("clear")
+            
 
 if __name__ == "__main__":
 
         while True:
+                os.system("clear")
                 print(f"""
                  _    _                    _____      _            _             _
                 |  \/  |                  |  __ \    (_)          (_)           | |

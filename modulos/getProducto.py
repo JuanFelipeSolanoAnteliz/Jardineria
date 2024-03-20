@@ -1,6 +1,6 @@
 import json
 import requests
-import modulos.getProducto as producto
+
 import modulos.getAllgamas as gG
 
 
@@ -17,9 +17,14 @@ def getProductoCode(codigo):
 
 
 def getAllData():
-    peticion = requests.get("http://127.0.0.1:5502")
+    peticion = requests.get("http://154.38.171.54:5008/productos")
     data = peticion.json
     print(data)
+
+def deleteProductID(id):    
+    peticion = requests.get("http://154.38.171.54:5008/productos/{id}")
+    return [peticion.json()] if peticion.ok else[]
+
 
 #decolver un listado con todos los productos que pertenezcan a la gama ornamental
 #y que tienen mas de 100 unidades en stock, el listado debera estar por su precio de venta 
@@ -39,11 +44,15 @@ def getAllstockPriceGama(gama,stock):
         if(condiciones [i].get("descripcion")):
             condiciones [i]["descripcion"] = f'{condiciones[i]["descripcion"][:5]}...'
     return condiciones
+import os
+
+
 def menu():
     while True:
+        os.system("clear")
         print("""
-                                                        BIENBENIDO AL MENU DE PRODUCTOS
-                                        1.Obtener un producto porsu gama y numero de stock.
+                                                        BIENVENIDO AL MENU DE PRODUCTOS
+                                        1.Obtener un producto por su gama y numero de stock.
                                         0.Regresar
                                         
                                         
@@ -51,10 +60,18 @@ def menu():
             """)
 
         opcion = int(input("Seleccione un un a de las dos opciones: "))
-        if opcion == 1:
-            print(tabulate(getAllstockPriceGama(),headers="keys", tablefmt ="rounded_grid"))
-        elif opcion == 0:
+        if opcion == 0:
             
             print("regresando...")
             break
+        
+        elif opcion == 1:
+           gama =input("ingrese la gama del producto: ")
+           stock =input("indique el stock del producto: ")
+                            
+           print(tabulate(getAllstockPriceGama(gama,stock), headers= "keys", tablefmt="rounden_grid"))
+        elif opcion >= 3:
+            print("opcion no existente")
+
+        
         

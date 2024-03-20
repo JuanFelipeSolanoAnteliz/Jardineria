@@ -16,11 +16,12 @@ def getCodigoPedid(codigo):
      
 #15
 def getAlEstado():
-    estado = set ()
-    for i, val in enumerate: getAlldata()
-    estado.add(val.get("codigo_pedido"))
-    estado.add(val.get("estado"))    
-    return estado     
+    estado = set()
+    for i, val in (getAlldata()):
+        estado.add(val.get("codigo_pedido"))
+        estado.add(val.get("estado"))
+    return estado
+
 
 #from datetime import datetime
 
@@ -66,9 +67,9 @@ from datetime import datetime
 #       return pedidosEntregado
 #15
 def getAllPedidosEntregadosAtrasadosDeTiempo():
-    pedidosEntregado = list()
+    pedidosEntregado = []
     for val in getAlldata():
-        if (val.get("estado") == "Entregado" and val.get("fecha_entrega") == None):
+        if (val.get("estado") == "Entregado" and val.get("fecha_entrega") is None):
             val["fecha_entrega"] = val.get("fecha_esperada")
         if (val.get("estado") == "Entregado"):
             date_1 = "/".join(val.get("fecha_entrega").split("-")[::-1])
@@ -77,19 +78,20 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
             end = datetime.strptime(date_2, "%d/%m/%Y")
             diff = end.date() - start.date()
             if diff.days < 0:
-                pedidosEntregado.append({
+                return pedidosEntregado.append({
                     "codigo_de_pedido": val.get("codigo_pedido"),
                     "codigo_de_cliente": val.get("codigo_cliente"),
                     "fecha_esperada": val.get("fecha_esperada"),
                     "fecha_de_entrega": val.get("fecha_entrega")
                 })
-    return pedidosEntregado
+    
 #16
 def getAllCodigoPedDosantesDiasFechaespera():
-    pedidoAdelantado = list()
+    pedidoAdelantado = []
 
     for val in getAlldata():
-        if (val.get("estado") == "Entregado" and val.get("fecha_entrega") == None):
+        if (val.get("estado") == "Entregado"
+            and val.get("fecha_entrega") is None):
             val["fecha_entrega"] = val.get("fecha_esperada")
         if (val.get("estado") == "Entregado"):
             date_1 = "/".join(val.get("fecha_entrega").split("-")[::-1])
@@ -110,8 +112,8 @@ def getAllPedRechazado2009():
     pedidoRechazado = []
     for val in getAlldata():
         año = val.get("fecha_entrega")
-        if (val.get("estado") == "Rechazado" and val.get("fecha_entrega") is not None): 
-            if año.startswith("2009"):
+        if (val.get("estado") == "Rechazado" and val.get("fecha_entrega") != None and año.startswith("2009")): 
+            
                 pedidoRechazado.append ({
                     "codigo_pedido": val.get("codigo_pedido"),
                     "estado_pedido": val.get("estado"),
@@ -173,7 +175,7 @@ def menu():
             print(tabulate(getAllpepdiosEnero(), headers = "keys", tablefmt = "rounded_grid"))
         elif opcion == 0:
            
-            print("regresando...")
+        
             
         
     

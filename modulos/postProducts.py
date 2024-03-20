@@ -4,7 +4,7 @@ import modulos.getAllgamas as gG
 import os
 import re 
 import getProducto as gP
-import postProducts
+
 from tabulate import tabulate 
 #    producto = {
         
@@ -21,12 +21,13 @@ from tabulate import tabulate
 def getProductoCRUD():
     producto = {}
     while True:
+        os.system("clear")
         try:     
         #expresion regular qu evalide cadenas y letras en mayusucula
            if (not producto.get("codigo_producto")):
                codigo = input( "Ingrese un codigo para el producto:  ")
-               if(re.match(r'^[a-zA-Z]{2}-[0-9]{3}$',codigo)is not None):
-                   data = gG.getProductoCode(codigo)
+               if re.match(r'^[a-zA-Z]{2}-[0-9]{3}$', codigo) is not None:
+                   data = gP.getProductoCode(codigo)
                    if data:
                        print(tabulate(data, headers = "keys", tablefmt = "rounded_grid"))
                        raise Exception("El codigo ya existe: ")
@@ -38,7 +39,7 @@ def getProductoCRUD():
                 #expresion regular que valide cada cadena solo letars que las primeras dos sean mayusculas
            if(not producto.get("nombre")):
                 nombre = input("ingresa el nombre: ")
-                if(re.match(r'^[A-Z][0-9]$*\s*)+$',nombre)is not None):
+                if(re.match(r'^[A-Z][a-zA-Z0-9\s.]*$',nombre))is not None:
                     producto ["nombre"] = nombre
                     break
                 else:
@@ -46,9 +47,7 @@ def getProductoCRUD():
             
            if(not producto.get("gama")):
                 gama = input("Ingrese una gama para su producto: ")
-                if(re.match(r'^[A-Z][a-zA-Z0-9\s.]*$',nombre)) is not None:
-                     vgama = gG.getAllNombre(gama)
-                     if vgama:
+                if(re.match(r'^[A-Z][a-zA-Z0-9\s.]*$',gama)) is not None: 
                           producto["gama"]= gama 
                           raise Exception ("gamas validas: Herbaceas, Herramientas, Aromáticas, Frutales, Ornamentales")
                      
@@ -109,7 +108,7 @@ def getProductoCRUD():
                             
                                 
 
-    peticion = requests.post("http://127.0.0.1:5000", data=json.dumps(producto,indent=4).encode("UTF-8"))
+    peticion = requests.post("http://154.38.171.54:5008/productos", data=json.dumps(producto,indent=4).encode("UTF-8"))
     rest = peticion.json()
     rest["Mensaje"] = "Producto guardado"
     return [rest]
@@ -117,7 +116,7 @@ def getProductoCRUD():
 def deleteProducto(id):
      data  = gP.getProductoCode(id)
      if(len(data)):
-          peticion = requests.delete(f"hhttp://[::1]:5502/productos/{id}")
+          peticion = requests.delete(f"http://154.38.171.54:5008/productos{id}")
           if (peticion.status_code == 204):
                data.append({"message": "producto eliminado correcto"})
                return {
@@ -143,16 +142,23 @@ def menu():
                             *****BIENVENIDO AL ADMINISTRADOR DE PRODUCTOS***** 
                             
                     1. Añadir datos para un nuevo producto.
+                    2. Eliminar un producto.
+                    
                     0. regresar
                     
                         
 """)    
         
-        opcion = int(input("""selccione la opcion numero uno (1) para entrar al 
-                           administrador de productos y añadir uno nuevo:  """))
-        if opcion == 1:
-            print(tabulate(getProductoCRUD(), headers = "keys", tablefmt= "rounded_ grid" ))
-        elif opcion == 0:
-        
-            print("regresando...")
-            break
+        opcion = input("""selccione una opcion.  """)
+        if re.match(r'[0-9]+$', opcion)is not None:
+             
+          if opcion >= 0 and opcion<=2:
+
+               if opcion == 1:
+                    print(tabulate(getProductoCRUD(), headers = "keys", tablefmt= "rounded_ grid" ))
+               elif opcion == 2:
+                    print(tabulate(deleteProducto(), headers = "keys", tablefmt= "rounded_ grid" ))
+               elif opcion == 0:
+               
+                    print("regresando...")
+                    break
