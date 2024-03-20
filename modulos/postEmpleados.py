@@ -4,6 +4,7 @@ import requests
 import modulos.getEmpleados as gE 
 from tabulate import tabulate
 import modulos.getOficina as oF
+import os
 
 def postEmpleados():
     empleados = {}
@@ -97,7 +98,7 @@ def postEmpleados():
         except Exception as error:
                         print(error)           
                         
-        peticion = requests.post("http://172.16.104.17:5506/empleados", data=json.dumps(empleado, indent=4).encode("UTF-8"))
+        peticion = requests.post("http://172.16.104.17:5506/empleados", data=json.dumps(empleados, indent=4).encode("UTF-8"))
         res = peticion.json()
         res["Mensaje"] = "Empleado Guardado"
         return [res]
@@ -105,6 +106,19 @@ def postEmpleados():
 def menu():
     while True:
         os.system("Clear")
+        print("""
+                                  ****BIENVENIDO AL ADMINISTRADOR DE EMPLEADOS****
+              
+              1. Agregar un empleado.
+
+              0. Salir
+
+""")
+        opcion = int(input("Seleccione una opcion: "))
+        if opcion == 1:
+            print(tabulate(postEmpleados(),headers="keys",tablefmt = "rounded_grid"))
+        elif opcion == 0:
+            break
 
      
                      

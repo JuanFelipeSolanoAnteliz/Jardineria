@@ -9,6 +9,11 @@ def defGetAllCli():
   data = peticion.json()
   print(data)
 
+def getcodeClie(codigo):
+  for val in defGetAllCli():
+    if val.get("codigo_cliente") == codigo:
+      return [val]
+
 
 #1
 def getAllClientName():
