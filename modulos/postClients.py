@@ -7,6 +7,7 @@ import modulos.getClients as gc
 def postclient():
     cliente = {}
     while True:
+        os.system("clear")
         try:
 
             if not cliente.get("codigo_cliente"):
@@ -24,6 +25,7 @@ def postclient():
                       cliente ["nombre_cliente"] = nombreCli 
                 else: 
                      raise Exception("El nombre indicado es invalido, recuerde usar unicamente letras e iniciar en mayusculas.")
+            
             if not cliente.get("nombre_contacto"):
                 nombreCon = input("Ingrese el nombre de contacto del cliente: ")
                 if re.match(r'^[A-Z]{1}[a-z]+\s[A-Z][a-z]+$',nombreCon) is not None:
@@ -49,30 +51,36 @@ def postclient():
                       cliente ["fax"] = fax
                 else:
                      raise Exception("El dato ingresado no es valido, recuerde usar unicamente numeros sin espacios entre ellos.")
+            
             if not cliente.get("linea_direccion1"):
                 direc1 = input("Ingrese la direccion del cliente: ")
                 if re.match(r'^\d*-?[a-zA-Z]+(?:[^\w\s]?[a-zA-Z]+)*$',direc1) is not None:
                     cliente ["linea_direccion1"]  = direc1
+            
             if not cliente.get("linea_direccion2"):
                 direc2 = input("ingrese una segunda direccion: ") 
                 if re.match(r'^\d*(-[a-zA-Z]+(?:[^\w\s]?[a-zA-Z]+)*)?$',direc2) is not None:
                      cliente ["linea_direccion2"] = direc2
+            
             if not cliente.get("ciudad") :
                 ciudad = input("ingrese la ciudad: ")
                 if re.match(r'^[A-Z]{1}[a-z]+$',ciudad) is not None:
                      cliente ["ciudad"] = ciudad
                 else:
                      raise Exception("Ciudad no valida, recuerde inicar en mayusculas.")
+            
             if not cliente.get("region"):
                 region = input("Ingrese la region del cliente: ")
                 if region and re.match(r'^([A-Z]{1}[a-z]+)?$',region)is not None:
                              cliente["region"] = region
+            
             if not cliente.get("pais"):
                 pais = input("ingrese el pais del cliente: ")
                 if re.match(r'^[A-Z]+[a-z]*$',pais) is not None:
                      cliente ["pais"] = pais
                 else:
                      raise Exception("pais no valido, recuerde siempre iniciar en mayusculas.")
+            
             if not cliente.get("limite_credito"):
                  limite= input("ingrese el limite de credito del cliente: ")
                  if re.match(r'^\d+.*\d*',limite) is not None:
@@ -80,8 +88,31 @@ def postclient():
                       cliente ["limite_credito"] = pais
                  else: 
                       raise Exception("el dato proporcionado no es valido, recuerde usar unicamente numeros")
-
+            break
 
 
         except Exception as error:
             print(error)
+import os
+def menu():
+     while True:
+          os.system("clear")
+          print("""             ******BIENVENIDO AL ADMINISTRADOR DE CLIENTES******
+                
+                1. Agregar un nuevo cliente.
+
+                0. Salir
+
+""")
+          
+          opcion = int(input("ingrese una opcion: "))
+          if opcion == 1:
+               print()
+          elif opcion == 0:
+               break
+        
+               
+        
+                
+
+
