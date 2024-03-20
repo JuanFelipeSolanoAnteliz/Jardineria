@@ -1,9 +1,9 @@
 import json
 import requests
-import modulos.getAllgamas as gG
+import modulos.getAllgamas as gg
 import os
 import re 
-import getProducto as gP
+import modulos.getProducto as pr
 
 from tabulate import tabulate 
 #    producto = {
@@ -27,7 +27,7 @@ def getProductoCRUD():
            if (not producto.get("codigo_producto")):
                codigo = input( "Ingrese un codigo para el producto:  ")
                if re.match(r'^[a-zA-Z]{2}-[0-9]{3}$', codigo) is not None:
-                   data = gP.getProductoCode(codigo)
+                   data = pr.getProductoCode(codigo)
                    if data:
                        print(tabulate(data, headers = "keys", tablefmt = "rounded_grid"))
                        raise Exception("El codigo ya existe: ")
@@ -114,7 +114,7 @@ def getProductoCRUD():
     return [rest]
 
 def deleteProducto(id):
-     data  = gP.getProductoCode(id)
+     data  = pr.getProductoCode(id)
      if(len(data)):
           peticion = requests.delete(f"http://154.38.171.54:5008/productos{id}")
           if (peticion.status_code == 204):

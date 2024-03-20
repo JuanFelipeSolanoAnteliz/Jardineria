@@ -1,7 +1,7 @@
 import json
 import requests
 
-import modulos.getAllgamas as gG
+
 
 
 from tabulate import tabulate

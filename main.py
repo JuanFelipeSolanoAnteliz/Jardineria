@@ -10,7 +10,7 @@ import modulos.getEmpleados as em
 import modulos.getPedido as ped 
 import modulos.getPago as pa 
 import modulos.getProducto as pr
-import modulos.postProducts as postPr 
+import modulos.postProducts as pspr 
 
 def menuProducto():
       while True: 
@@ -36,7 +36,7 @@ def menuProducto():
             if opcion == 1:
                   pr.menu()
             elif opcion == 2:
-                 postPr.menu()
+                 pspr.menu()
                  
 def menuPedido():
       while True: 
