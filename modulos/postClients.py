@@ -89,6 +89,9 @@ def postclient():
                  else: 
                       raise Exception("el dato proporcionado no es valido, recuerde usar unicamente numeros")
             break
+        except Exception as error:
+                    print(error)
+                    
 def DeleteClientes(id):
     data = gc.DeleteClienteCodigoasd(id)
     if len(data):

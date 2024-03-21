@@ -119,7 +119,7 @@ def menu():
     while True:
         
         print("""
-                                              _           _       _     _                 _                  _                                    
+              _           _       _     _                 _                  _                                    
      /\      | |         (_)     (_)   | |               | |                | |                                   
     /  \   __| |_ __ ___  _ _ __  _ ___| |_ _ __ __ _  __| | ___  _ __    __| | ___   _ __   __ _  __ _  ___  ___ 
    / /\ \ / _` | '_ ` _ \| | '_ \| / __| __| '__/ _` |/ _` |/ _ \| '__|  / _` |/ _ \ | '_ \ / _` |/ _` |/ _ \/ __|
@@ -137,6 +137,18 @@ def menu():
         opcion = int(input("seleccione una opcion"))
         if opcion == 1 :
             print(tabulate(getpagoCRUD(), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")
+
+        elif opcion == 2:
+            id = input("Ingrese el id del producto")
+            print(tabulate(DeletePago(id), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")
+        
+        elif opcion == 3:
+            id = input("Ingrese el id del producto")
+            print(tabulate(ModificarPagos(id), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")    
+
             input("presione una tecla para continuar")
         
         

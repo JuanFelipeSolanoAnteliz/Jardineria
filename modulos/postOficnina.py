@@ -141,6 +141,8 @@ def menu():
                                     *****BIENVENIDO AL ADMINISTRADOR DE OFCINAS*****
                                     
                                 1. Agregar oficinas.
+                                2. Eliminar una oficina.
+                                3. Modificar
                                 
                                 0. Salir
                                 
@@ -148,11 +150,22 @@ def menu():
               """)
 
 
-opcion = input("seleccione una opcion: ")
+        opcion = int(input("seleccione una opcion"))
+        if opcion == 1 :
+            print(tabulate(postOficina(), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")
 
-if opcion == 1:
-    print(tabulate())
-                
+        elif opcion == 2:
+            id = input("Ingrese el id del producto")
+            print(tabulate(DeleteOficina(id), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")
+        
+        elif opcion == 3:
+            id = input("Ingrese el id del producto")
+            print(tabulate(ModificarOficina(id), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")    
+
+            input("presione una tecla para continuar")
                 
         
 
