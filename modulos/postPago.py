@@ -115,7 +115,7 @@ Seleccion incorrecta""")
     res = peticion.json()
     res["Mensaje"] = "Pago Modificado"
     return [res]
-def menu():
+def menupago():
     while True:
         
         print("""

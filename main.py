@@ -11,7 +11,11 @@ import modulos.getPedido as ped
 import modulos.getPago as pa 
 import modulos.getProducto as pr
 import modulos.postProducts as pspr 
-
+import modulos.postPago as pa
+import modulos.postPedido as pd
+import modulos.postOficnina as ofi
+import modulos.postEmpleados as empi
+import modulos.postClients as pcli
 def menuProducto():
       while True: 
             os.system("clear")
@@ -70,15 +74,15 @@ if __name__ == "__main__":
                 
                 opcion = int(input("¡Bienvendo! Seleccone una de las opciones:"))
                 if(opcion == 1):
-                    clientes.menu()
+                    pcli.menu()
                 elif(opcion == 2):
-                      of.menu()
+                      ofi.menu()
                 elif(opcion == 3):
-                      em.menu()
+                      empi.menu()
                 elif(opcion == 4):
-                      ped.menu()
+                      pd.menuped()
                 elif(opcion == 5):
-                      pa.menu()
+                      pa.menupago()
                 elif(opcion == 6):
                       menuProducto()
                 elif(opcion == 0):

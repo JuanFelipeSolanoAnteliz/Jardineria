@@ -145,7 +145,7 @@ Seleccion incorrecta""")
 
         
 
-def menu():
+def menuped():
      while True:
         os.system("clear")
         print("""
