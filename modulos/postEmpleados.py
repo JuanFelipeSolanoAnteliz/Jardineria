@@ -116,7 +116,7 @@ def DeleteEmpleado(id):
             "status": 400,
             }
 
-def ModificarUnEmpleado(id):
+def DeleteEmpleado(id):
     data = gE.Deleteidk(id)
     if data is None:
             print(f"""
@@ -137,12 +137,11 @@ Seleccione una opción: """))
             nuevoValor = input(f"""
 Ingrese el nuevo valor para {datoModificar}: """)
             if datoModificar in data[0]:
-                if datoModificar == "codigo_empleado" or "codigo_jefe":
+                if data[0][datoModificar] == data[0]["codigo_cliente"] or data[0][datoModificar] == data[0]["total"]:
                     data[0][datoModificar] = int(nuevoValor)
-                    break
+                    
                 else:
                     data[0][datoModificar] = nuevoValor
-                    print(tabulate(data[0], headers="keys", tablefmt="rounded_grid"))
                     break
             else:
                  print(f"""
@@ -160,9 +159,19 @@ def menu():
     while True:
         os.system("Clear")
         print("""
-                                  ****BIENVENIDO AL ADMINISTRADOR DE EMPLEADOS****
-              
+                                 
+  ____  _                           _     _               _             _           _       _     _                 _                  _                             _                _           
+ |  _ \(_)                         (_)   | |             | |           | |         (_)     (_)   | |               | |                | |                           | |              | |          
+ | |_) |_  ___ _ ____   _____ _ __  _  __| | ___     __ _| |   __ _  __| |_ __ ___  _ _ __  _ ___| |_ _ __ __ _  __| | ___  _ __    __| | ___    ___ _ __ ___  _ __ | | ___  __ _  __| | ___  ___ 
+ |  _ <| |/ _ \ '_ \ \ / / _ \ '_ \| |/ _` |/ _ \   / _` | |  / _` |/ _` | '_ ` _ \| | '_ \| / __| __| '__/ _` |/ _` |/ _ \| '__|  / _` |/ _ \  / _ \ '_ ` _ \| '_ \| |/ _ \/ _` |/ _` |/ _ \/ __|
+ | |_) | |  __/ | | \ V /  __/ | | | | (_| | (_) | | (_| | | | (_| | (_| | | | | | | | | | | \__ \ |_| | | (_| | (_| | (_) | |    | (_| |  __/ |  __/ | | | | | |_) | |  __/ (_| | (_| | (_) \__ \
+ |____/|_|\___|_| |_|\_/ \___|_| |_|_|\__,_|\___/   \__,_|_|  \__,_|\__,_|_| |_| |_|_|_| |_|_|___/\__|_|  \__,_|\__,_|\___/|_|     \__,_|\___|  \___|_| |_| |_| .__/|_|\___|\__,_|\__,_|\___/|___/
+                                                                                                                                                              | |                                 
+                                                                                                                                                              |_|                                 
+
               1. Agregar un empleado.
+              2. eliminar un empleado.
+              3. Modificar empleado.
 
               0. Salir
 
@@ -170,6 +179,17 @@ def menu():
         opcion = int(input("Seleccione una opcion: "))
         if opcion == 1:
             print(tabulate(postEmpleados(),headers="keys",tablefmt = "rounded_grid"))
+        elif opcion == 2:
+            id = input("Ingrese el id del producto")
+            print(tabulate(DeleteEmpleado(id), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")
+        
+        elif opcion == 3:
+            id = input("Ingrese el id del producto")
+            print(tabulate(DeleteEmpleado(id), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")    
+
+            input("presione una tecla para continuar")
         elif opcion == 0:
             break
 

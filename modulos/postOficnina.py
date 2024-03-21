@@ -119,7 +119,6 @@ Seleccione una opción: """))
 Ingrese el nuevo valor para {datoModificar}: """)
             if datoModificar in data[0]:
                 data[0][datoModificar] = nuevoValor
-                print(tabulate(data[0], headers="keys", tablefmt="rounded_grid"))
                 break
             else:
                  print(f"""
@@ -138,7 +137,14 @@ Seleccion incorrecta""")
 def menu():
     while True:
         print("""
-                                    *****BIENVENIDO AL ADMINISTRADOR DE OFCINAS*****
+  ____  _                           _     _               _             _           _       _     _                 _                  _                            _            _            
+ |  _ \(_)                         (_)   | |             | |           | |         (_)     (_)   | |               | |                | |                          | |          | |           
+ | |_) |_  ___ _ ____   _____ _ __  _  __| | ___     __ _| |   __ _  __| |_ __ ___  _ _ __  _ ___| |_ _ __ __ _  __| | ___  _ __    __| | ___   _ __  _ __ ___   __| |_   _  ___| |_ ___  ___ 
+ |  _ <| |/ _ \ '_ \ \ / / _ \ '_ \| |/ _` |/ _ \   / _` | |  / _` |/ _` | '_ ` _ \| | '_ \| / __| __| '__/ _` |/ _` |/ _ \| '__|  / _` |/ _ \ | '_ \| '__/ _ \ / _` | | | |/ __| __/ _ \/ __|
+ | |_) | |  __/ | | \ V /  __/ | | | | (_| | (_) | | (_| | | | (_| | (_| | | | | | | | | | | \__ \ |_| | | (_| | (_| | (_) | |    | (_| |  __/ | |_) | | | (_) | (_| | |_| | (__| || (_) \__ \
+ |____/|_|\___|_| |_|\_/ \___|_| |_|_|\__,_|\___/   \__,_|_|  \__,_|\__,_|_| |_| |_|_|_| |_|_|___/\__|_|  \__,_|\__,_|\___/|_|     \__,_|\___| | .__/|_|  \___/ \__,_|\__,_|\___|\__\___/|___/
+                                                                                                                                               | |                                            
+                                                                                                                                               |_|                                          
                                     
                                 1. Agregar oficinas.
                                 2. Eliminar una oficina.
@@ -166,6 +172,8 @@ def menu():
             input("presione una letra para continuar.....")    
 
             input("presione una tecla para continuar")
+        elif opcion == 0:
+            break
                 
         
 

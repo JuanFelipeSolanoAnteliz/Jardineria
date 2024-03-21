@@ -163,12 +163,12 @@ Seleccione una opción: """))
             nuevoValor = input(f"""
 Ingrese el nuevo valor para {datoModificar}: """)
             if datoModificar in data[0]:
-                if datoModificar != "cantidadEnStock" or "precio_venta" or "precio_proveedor":
-                    data[0][datoModificar] = (nuevoValor)
-                    break
+                if data[0][datoModificar] == data[0]["cantidadEnStock"] or data[0][datoModificar] == data[0]["precio_venta"] or data[0][datoModificar]== data[0]["precio_proveedor"]:
+                    data[0][datoModificar] = int(nuevoValor)
+                    
                 else:
                     data[0][datoModificar] = int(nuevoValor)
-                    print(tabulate(data[0], headers="keys", tablefmt="rounded_grid"))
+                   
                     break
             else:
                  print("""

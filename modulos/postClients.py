@@ -157,9 +157,19 @@ import os
 def menu():
      while True:
           os.system("clear")
-          print("""             ******BIENVENIDO AL ADMINISTRADOR DE CLIENTES******
-                
+          print("""            
+  ____  _                           _     _               _             _           _       _     _                 _                  _             _ _            _            
+ |  _ \(_)                         (_)   | |             | |           | |         (_)     (_)   | |               | |                | |           | (_)          | |           
+ | |_) |_  ___ _ ____   _____ _ __  _  __| | ___     __ _| |   __ _  __| |_ __ ___  _ _ __  _ ___| |_ _ __ __ _  __| | ___  _ __    __| | ___    ___| |_  ___ _ __ | |_ ___  ___ 
+ |  _ <| |/ _ \ '_ \ \ / / _ \ '_ \| |/ _` |/ _ \   / _` | |  / _` |/ _` | '_ ` _ \| | '_ \| / __| __| '__/ _` |/ _` |/ _ \| '__|  / _` |/ _ \  / __| | |/ _ \ '_ \| __/ _ \/ __|
+ | |_) | |  __/ | | \ V /  __/ | | | | (_| | (_) | | (_| | | | (_| | (_| | | | | | | | | | | \__ \ |_| | | (_| | (_| | (_) | |    | (_| |  __/ | (__| | |  __/ | | | ||  __/\__ \
+ |____/|_|\___|_| |_|\_/ \___|_| |_|_|\__,_|\___/   \__,_|_|  \__,_|\__,_|_| |_| |_|_|_| |_|_|___/\__|_|  \__,_|\__,_|\___/|_|     \__,_|\___|  \___|_|_|\___|_| |_|\__\___||___/
+                                                                                                                                                                                 
+                                                                                                                                                                                 
+
                 1. Agregar un nuevo cliente.
+                2. Eliminar cliente.
+                3. Modificar cliente.
 
                 0. Salir
 
@@ -168,9 +178,20 @@ def menu():
           opcion = int(input("ingrese una opcion: "))
           if opcion == 1:
                print()
-          elif opcion == 0:
-               break
+          elif opcion == 2:
+            id = input("Ingrese el id del producto")
+            print(tabulate(DeleteClientes(id), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una letra para continuar.....")
         
+          elif opcion == 3:
+                id = input("Ingrese el id del producto")
+                print(tabulate(ModificarCliente(id), headers = "keys", tablefmt= "rounded_grid" ))
+                input("presione una letra para continuar.....")    
+
+                input("presione una tecla para continuar")
+          elif opcion == 0:
+                break
+            
                
         
                 
