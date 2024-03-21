@@ -57,21 +57,88 @@ def getpagoCRUD():
                     print(error)
                     
                     
-        peticion = requests.post("http://172.16.104.17:5503",  data = json.dumps(pago,indent=4).encode("UTF-8"))
-        rest = peticion.json()
-        rest ["Mensaje"] = "pedido guardado"
-        return [rest]
-            
+def DeletePago(id):
+    data = gPg.DeleteOficinaidk(id)
+    if len(data):
+        peticion = requests.delete(f"http://154.38.171.54:5006/pagos/{id}")
+        if peticion.status_code == 204:
+            data.append({"message":  "Pago eliminado correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code,
+            }
+    else:
+        return {
+                "body":[{
+                    "Mensaje": "Pago no encontrado.",
+                    "id": id,
+            }],
+            "status": 400,
+        }
+
+def ModificarPagos(id):
+    data = gPg.DeleteOficinaidk(id)
+    if data is None:
+            print(f"""
+
+Id del pago no encontrado. """)
+
+    while True:
+        try:
+            print(tabulate(data, headers="keys", tablefmt="rounded_grid"))
+            print(f"""
+Datos para modificar: """)
+            for i, (val, asd) in enumerate(data[0].items()):
+                print(f"{i+1}. {val}")
+
+            opcion = int(input(f"""
+Seleccione una opción: """))
+            datoModificar = list(data[0].keys())[opcion - 1]
+            nuevoValor = input(f"""
+Ingrese el nuevo valor para {datoModificar}: """)
+            if datoModificar in data[0]:
+                if datoModificar == "total" or "codigo_cliente":
+                    data[0][datoModificar] = int(nuevoValor)
+                    break
+                else:
+                    data[0][datoModificar] = nuevoValor
+                    print(tabulate(data[0], headers="keys", tablefmt="rounded_grid"))
+                    break
+            else:
+                 print(f"""
+Seleccion incorrecta""")
+
+        except ValueError as error:
+            print(error)
+
+    peticion = requests.put(f"http://154.38.171.54:5006/pagos/{id}", data=json.dumps(data[0], indent=4).encode("UTF-8"))
+    res = peticion.json()
+    res["Mensaje"] = "Pago Modificado"
+    return [res]
 def menu():
     while True:
         
         print("""
-                                ****BIENVENDO AL ADMINISTRADOR DE PAGOS****
+                                              _           _       _     _                 _                  _                                    
+     /\      | |         (_)     (_)   | |               | |                | |                                   
+    /  \   __| |_ __ ___  _ _ __  _ ___| |_ _ __ __ _  __| | ___  _ __    __| | ___   _ __   __ _  __ _  ___  ___ 
+   / /\ \ / _` | '_ ` _ \| | '_ \| / __| __| '__/ _` |/ _` |/ _ \| '__|  / _` |/ _ \ | '_ \ / _` |/ _` |/ _ \/ __|
+  / ____ \ (_| | | | | | | | | | | \__ \ |_| | | (_| | (_| | (_) | |    | (_| |  __/ | |_) | (_| | (_| | (_) \__ \
+ /_/    \_\__,_|_| |_| |_|_|_| |_|_|___/\__|_|  \__,_|\__,_|\___/|_|     \__,_|\___| | .__/ \__,_|\__, |\___/|___/
+                                                                                     | |           __/ |          
+                                                                                     |_|          |___/  
                                 1. Agregar un nuevo pago
-                                
-                                0.
+                                2. eliminar pago
+                                3. Modificar pago
+                                0. salir
               
               """)
+        
+        opcion = int(input("seleccione una opcion"))
+        if opcion == 1 :
+            print(tabulate(getpagoCRUD(), headers = "keys", tablefmt= "rounded_grid" ))
+            input("presione una tecla para continuar")
+        
         
 
                 

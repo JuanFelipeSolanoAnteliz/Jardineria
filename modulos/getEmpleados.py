@@ -58,6 +58,10 @@ def getAllNAP():
             "nombre": val.get("nombre"),
             "apellidos":f'{val.get("apellido1")} {val.get("apellido2")}'
          })
+        
+def Deleteidk(id):
+    peticion = requests.get(f"http://154.38.171.54:5003/empleados/{id}")
+    return [peticion.json()] if peticion.ok else []
 
     
 

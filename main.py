@@ -113,4 +113,3 @@ with open("storage/cliente.json", "r") as f:
         f1.write(data)
         f1.close()
       
-"http://154.38.171.54:5001"

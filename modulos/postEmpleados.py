@@ -97,11 +97,64 @@ def postEmpleados():
                 
         except Exception as error:
                         print(error)           
-                        
-        peticion = requests.post("http://172.16.104.17:5506/empleados", data=json.dumps(empleados, indent=4).encode("UTF-8"))
-        res = peticion.json()
-        res["Mensaje"] = "Empleado Guardado"
-        return [res]
+def DeleteEmpleado(id):
+    data = gE.Deleteidk(id)
+    if len(data):
+        peticion = requests.delete(f"http://154.38.171.54:5003/empleados/{id}")
+        if peticion.status_code == 204:
+            data.append({"message":  "Empleado eliminado correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code,
+            }
+    else:
+        return {
+                "body":[{
+                    "Mensaje": "Empleado no encontrado.",
+                    "id": id,
+            }],
+            "status": 400,
+            }
+
+def ModificarUnEmpleado(id):
+    data = gE.Deleteidk(id)
+    if data is None:
+            print(f"""
+
+Id del empleado no encontrado. """)
+
+    while True:
+        try:
+            print(tabulate(data, headers="keys", tablefmt="rounded_grid"))
+            print(f"""
+Datos para modificar: """)
+            for i, (val, asd) in enumerate(data[0].items()):
+                print(f"{i+1}. {val}")
+
+            opcion = int(input(f"""
+Seleccione una opción: """))
+            datoModificar = list(data[0].keys())[opcion - 1]
+            nuevoValor = input(f"""
+Ingrese el nuevo valor para {datoModificar}: """)
+            if datoModificar in data[0]:
+                if datoModificar == "codigo_empleado" or "codigo_jefe":
+                    data[0][datoModificar] = int(nuevoValor)
+                    break
+                else:
+                    data[0][datoModificar] = nuevoValor
+                    print(tabulate(data[0], headers="keys", tablefmt="rounded_grid"))
+                    break
+            else:
+                 print(f"""
+Seleccion incorrecta""")
+
+        except ValueError as error:
+            print(error)
+
+    peticion = requests.put(f"http://154.38.171.54:5003/empleados/{id}", data=json.dumps(data[0], indent=4).encode("UTF-8"))
+    res = peticion.json()
+    res["Mensaje"] = "Empleado Modificado"
+    return [res]                       
 
 def menu():
     while True:

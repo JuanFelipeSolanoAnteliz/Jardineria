@@ -200,7 +200,9 @@ def getNameRepvents():
            clientepago.add(val.get("nombre_cliente"),(juan.get("id_transaccion"),(style.get())))
   return clientepago
 
-      
+def DeleteClienteCodigoasd(id):
+    peticion = requests.get(f"http://154.38.171.54:5001/cliente/{id}")
+    return [peticion.json()] if peticion.ok else []
         
 
   

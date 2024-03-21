@@ -39,7 +39,10 @@ def getAllCiudadTelefono(pais):
                 "oficinas" : val.get("cpodigo_oficina"),
                 "pais" : val.get("pais") 
             })
-    
+def DeleteOficinaidk(id):
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{id}")
+    return [peticion.json()] if peticion.ok else []
+
 
 def menu():
     while True:

@@ -47,6 +47,10 @@ def getAllFormaPago():
             
     return formaDePago
 
+def DeleteOficinaidk(id):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{id}")
+    return [peticion.json()] if peticion.ok else []
+
 def menu():
     while True:
         print(""" 

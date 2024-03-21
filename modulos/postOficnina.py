@@ -77,7 +77,61 @@ def postOficina():
         rest = peticion.json()
         rest ["Mensaje"] = "pedido guardado"
         return [rest]
-    
+
+def DeleteOficina(id):
+    data = oF.DeleteOficinaidk(id)
+    if len(data):
+        peticion = requests.delete(f"http://154.38.171.54:5005/oficinas/{id}")
+        if peticion.status_code == 204:
+            data.append({"message":  "Oficina eliminada correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code,
+            }
+    else:
+        return {
+                "body":[{
+                    "Mensaje": "Oficina no encontrado.",
+                    "id": id,
+            }],
+            "status": 400,
+            }
+
+def ModificarOficina(id):
+    data = oF.DeleteOficinaidk(id)
+    if data is None:
+            print(f"""
+
+Id de la oficina no encontrado. """)
+
+    while True:
+        try:
+            print(tabulate(data, headers="keys", tablefmt="rounded_grid"))
+            print(f"""
+Datos para modificar: """)
+            for i, (val, asd) in enumerate(data[0].items()):
+                print(f"{i+1}. {val}")
+
+            opcion = int(input(f"""
+Seleccione una opción: """))
+            datoModificar = list(data[0].keys())[opcion - 1]
+            nuevoValor = input(f"""
+Ingrese el nuevo valor para {datoModificar}: """)
+            if datoModificar in data[0]:
+                data[0][datoModificar] = nuevoValor
+                print(tabulate(data[0], headers="keys", tablefmt="rounded_grid"))
+                break
+            else:
+                 print(f"""
+Seleccion incorrecta""")
+
+        except ValueError as error:
+            print(error)
+
+    peticion = requests.put(f"http://154.38.171.54:5005/oficinas/{id}", data=json.dumps(data[0], indent=4).encode("UTF-8"))
+    res = peticion.json()
+    res["Mensaje"] = "Oficina Modificado"
+    return [res]
     
 
                     
