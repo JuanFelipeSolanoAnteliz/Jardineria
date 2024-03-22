@@ -143,7 +143,33 @@ Seleccion incorrecta""")
 
 
 
-        
+def menu():
+    while True:
+        os.system("clear")
+        print("""
+
+                    __  __                        _                       _ _     _           
+                    |  \/  |                      | |                     | (_)   | |          
+                    | \  / | ___ _ __  _   _    __| | ___   _ __   ___  __| |_  __| | ___  ___ 
+                    | |\/| |/ _ \ '_ \| | | |  / _` |/ _ \ | '_ \ / _ \/ _` | |/ _` |/ _ \/ __|
+                    | |  | |  __/ | | | |_| | | (_| |  __/ | |_) |  __/ (_| | | (_| | (_) \__ \
+                    |_|  |_|\___|_| |_|\__,_|  \__,_|\___| | .__/ \___|\__,_|_|\__,_|\___/|___/
+                                                            | |                                 
+                                                            |_|                                 
+              1. reporte de pedidos
+              2. administrador de pedidos
+              0. Salir
+""")   
+        opcion = input("seleccione una de las opciones: ")
+        if opcion == 1: 
+                gP.menu()
+        elif opcion == 2:
+                menuped()
+        elif opcion == 0:
+            break
+
+
+
 
 def menuped():
      while True:

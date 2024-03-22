@@ -153,8 +153,40 @@ Seleccion incorrecta""")
 
         except Exception as error:
             print(error)
+import modulos.getClients as gc
 import os
 def menu():
+     while True:
+          os.system("clear")
+          print("""
+
+                                    __  __                        _             _ _            _            
+                                    |  \/  |                      | |           | (_)          | |           
+                                    | \  / | ___ _ __  _   _    __| | ___    ___| |_  ___ _ __ | |_ ___  ___ 
+                                    | |\/| |/ _ \ '_ \| | | |  / _` |/ _ \  / __| | |/ _ \ '_ \| __/ _ \/ __|
+                                    | |  | |  __/ | | | |_| | | (_| |  __/ | (__| | |  __/ | | | ||  __/\__ !
+                                    |_|  |_|\___|_| |_|\__,_|  \__,_|\___|  \___|_|_|\___|_| |_|\__\___||___/
+                
+                1. reporte de los clientes
+                2. administrar clientes
+
+                0.Salir
+                                                                          
+                                                                          
+
+""")
+          
+          opcion = int(input("seleccione una de las opciones: "))
+          if opcion == 1: 
+               gc.xdxdxd()
+          elif opcion == 2:
+               menuadmin()
+          elif opcion == 0:
+               break
+               
+               
+               
+def menuadmin():
      while True:
           os.system("clear")
           print("""            
@@ -162,7 +194,7 @@ def menu():
  |  _ \(_)                         (_)   | |             | |           | |         (_)     (_)   | |               | |                | |           | (_)          | |           
  | |_) |_  ___ _ ____   _____ _ __  _  __| | ___     __ _| |   __ _  __| |_ __ ___  _ _ __  _ ___| |_ _ __ __ _  __| | ___  _ __    __| | ___    ___| |_  ___ _ __ | |_ ___  ___ 
  |  _ <| |/ _ \ '_ \ \ / / _ \ '_ \| |/ _` |/ _ \   / _` | |  / _` |/ _` | '_ ` _ \| | '_ \| / __| __| '__/ _` |/ _` |/ _ \| '__|  / _` |/ _ \  / __| | |/ _ \ '_ \| __/ _ \/ __|
- | |_) | |  __/ | | \ V /  __/ | | | | (_| | (_) | | (_| | | | (_| | (_| | | | | | | | | | | \__ \ |_| | | (_| | (_| | (_) | |    | (_| |  __/ | (__| | |  __/ | | | ||  __/\__ \
+ | |_) | |  __/ | | \ V /  __/ | | | | (_| | (_) | | (_| | | | (_| | (_| | | | | | | | | | | \__ \ |_| | | (_| | (_| | (_) | |    | (_| |  __/ | (__| | |  __/ | | | ||  __/\__ !
  |____/|_|\___|_| |_|\_/ \___|_| |_|_|\__,_|\___/   \__,_|_|  \__,_|\__,_|_| |_| |_|_|_| |_|_|___/\__|_|  \__,_|\__,_|\___/|_|     \__,_|\___|  \___|_|_|\___|_| |_|\__\___||___/
                                                                                                                                                                                  
                                                                                                                                                                                  
@@ -177,7 +209,7 @@ def menu():
           
           opcion = int(input("ingrese una opcion: "))
           if opcion == 1:
-               print()
+               print(tabulate(postclient(), headers = "keys", tablefmt= "rounded_grid" ))
           elif opcion == 2:
             id = input("Ingrese el id del producto")
             print(tabulate(DeleteClientes(id), headers = "keys", tablefmt= "rounded_grid" ))

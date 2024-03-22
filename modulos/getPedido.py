@@ -4,9 +4,9 @@ from tabulate import tabulate
 import requests
 
 def getAlldata():
-    peticion = requests.get("http://172.16.104.17:5503")
+    peticion = requests.get("http://154.38.171.54:5007/pedidos")
     data =peticion.json 
-    print(data)
+    return data
 
 def DeletePedidoidk(id):
     peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{id}")
@@ -178,6 +178,7 @@ def menu():
         elif opcion == 5: 
             print(tabulate(getAllpepdiosEnero(), headers = "keys", tablefmt = "rounded_grid"))
         elif opcion == 0:
+            input("presione una tecla para continuar...")
            
         
             

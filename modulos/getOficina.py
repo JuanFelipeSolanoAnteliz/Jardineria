@@ -14,9 +14,9 @@ def getAllcodeOfi():
     
     
 def getAlldataOf():
-    peticion = requests.get("http://172.16.104.17:5505")
+    peticion = requests.get("http://154.38.171.54:5005/oficinas")
     data= peticion.json()
-    print(data)
+    return data
 #12 obtener codigo y ciudad de la oficina
 
  
@@ -71,9 +71,11 @@ def menu():
             break
         elif opcion == 1: 
             print(tabulate(getAllCodigoCiudad(),headers = "keys", tablefmt = "rounded_grid"))
+            input("presione una tecla para continuar...")
         elif opcion == 2:
             pais = input("Ingrese un pais: ")
             print(tabulate(getAllCiudadTelefono(pais), headres ="keys", tablefmt = "rounded_grid"))
+            input("presione una tecla para continuar...")
         
             
             break

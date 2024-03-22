@@ -1,3 +1,4 @@
+2
 
 
 import os
@@ -16,6 +17,9 @@ import modulos.postPedido as pd
 import modulos.postOficnina as ofi
 import modulos.postEmpleados as empi
 import modulos.postClients as pcli
+
+import json 
+
 def menuProducto():
       while True: 
             os.system("clear")
@@ -80,7 +84,7 @@ if __name__ == "__main__":
                 elif(opcion == 3):
                       empi.menu()
                 elif(opcion == 4):
-                      pd.menuped()
+                      pd.menu()
                 elif(opcion == 5):
                       pa.menupago()
                 elif(opcion == 6):
@@ -92,12 +96,6 @@ if __name__ == "__main__":
 
 import sys
 
-for nombre, objeto in sys.modules.items():
-   if nombre.startswith("modulos"):
-       modulo = getattr(objeto,"__name__", None)
-       if(modulo != "modules"):
-           file = modulo.split("get")[-1]
-           print(modulo)
 
 print(tabulate(pa.getAllPago08Paypal(),tablefmt = 'rounded_grid'))
 
@@ -107,13 +105,5 @@ print(data)
 
 import json 
 
-with open("storage/cliente.json", "r") as f:
-    fichero = f.read()
-    data = json.loads(fichero)
-    for i, val in enumerate(data):
-        data[i]["id"] = (i+1)
-    data = json.dumps(data, indent=4).encode("utf-8")
-    with open("storage/cliente.json", "wb+") as f1:
-        f1.write(data)
-        f1.close()
+
       

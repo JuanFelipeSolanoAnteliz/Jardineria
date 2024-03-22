@@ -63,6 +63,8 @@ def menu():
         print("""
                                                         BIENVENIDO AL MENU DE PRODUCTOS
                                         1.Obtener un producto por su gama y numero de stock.
+                                        2.Eliminar un producto.
+                                        3.Modificar producto 
                                         0.Regresar
                                         
                                         

@@ -153,9 +153,35 @@ Seleccion incorrecta""")
     peticion = requests.put(f"http://154.38.171.54:5003/empleados/{id}", data=json.dumps(data[0], indent=4).encode("UTF-8"))
     res = peticion.json()
     res["Mensaje"] = "Empleado Modificado"
-    return [res]                       
-
+    return [res]  
 def menu():
+    while True:
+        os.system("clear")
+        print("""
+            __  __                        _                             _                _           
+            |  \/  |                      | |                           | |              | |          
+            | \  / | ___ _ __  _   _    __| | ___    ___ _ __ ___  _ __ | | ___  __ _  __| | ___  ___ 
+            | |\/| |/ _ \ '_ \| | | |  / _` |/ _ \  / _ \ '_ ` _ \| '_ \| |/ _ \/ _` |/ _` |/ _ \/ __|
+            | |  | |  __/ | | | |_| | | (_| |  __/ |  __/ | | | | | |_) | |  __/ (_| | (_| | (_) \__ \
+            |_|  |_|\___|_| |_|\__,_|  \__,_|\___|  \___|_| |_| |_| .__/|_|\___|\__,_|\__,_|\___/|___/
+                                                                | |                                 
+                                                                |_|                        
+
+              1. reporte de empleados.
+              2. administrador de empleados.
+
+              0. Salir      
+            """)             
+
+        opcion = input("seleccione una de las opciones: ")
+        if opcion == 1: 
+                gE.menu()
+        elif opcion == 2:
+                menuadmin()
+        elif opcion == 0:
+            break        
+
+def menuadmin():
     while True:
         os.system("Clear")
         print("""

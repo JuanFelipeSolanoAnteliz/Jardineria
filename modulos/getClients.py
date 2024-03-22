@@ -1,13 +1,14 @@
 from tabulate import tabulate
 #import storage.cliente as cli 
-import modulos.getEmpleados as em 
+import modulos.getEmpleados as em
+
 import modulos.getPago as pa
 import json 
 import requests
 def defGetAllCli():
-  peticion = requests.get("http://172.16.104.17:5507")
+  peticion = requests.get("http://154.38.171.54:5001/cliente")
   data = peticion.json()
-  print(data)
+  return data
 
 def getcodeClie(codigo):
   for val in defGetAllCli():
@@ -17,14 +18,14 @@ def getcodeClie(codigo):
 
 #1
 def getAllClientName():
-  clientName = []
-  for val in requests.post():
-    CodigoName = dict({
-      "codigo": val.get("codigo_cliente"),
-      "nombre": val.get("nombre_cliente")
-    })
-    clientName.append(CodigoName)
-  return clientName
+    clienteName = []
+    for i,val in enumerate(defGetAllCli()):
+        clienteName.append({
+            "codigo_cliente": val.get("codigo_cliente"),
+            "nombre_cliente": val.get("nombre_cliente")
+            })
+    return clienteName
+  
 #2 obtener la informacin de un cliente a partir del codigo de cliente 
 def getOneClientCode(codigo):
   codigClient = []
@@ -207,10 +208,7 @@ def DeleteClienteCodigoasd(id):
 
   
     
-def menu():
-  """
-  Muestra un menú con opciones para consultar información de clientes.
-  """
+def xdxdxd():
   while True:
 
     print("""
@@ -253,31 +251,29 @@ def menu():
 
     """)
 
-    opcion = int(input("\nSeleccione una de las opciones: "))
+    opcion = int(input("Seleccione una de las opciones: "))
 
     if opcion == 1:
-      print(tabulate(getAllClientName(), headers="keys", tablefmt="rounded_grid"))
+      print(tabulate(getAllClientName(), headers="keys", tablefmt='rounded_grid'))
+      input("presione una tecla para continuar...")
     elif opcion == 2:
       clientecode = int(input("Ingrese el codigo de cliente: "))
       print(tabulate(getOneClientCode(clientecode), headers="keys", tablefmt="rounded_grid"))
+      input("presione una tecla para continuar...")
     elif opcion == 3:
       limite = input("Ingrese el limite de credito: ")
       ciudad = input("Ingrese ciudad: ")
-      print(
-        tabulate(
-          getAllClientCredCiudad(limite, ciudad), headers="keys", tablefmt="rounded_grid"
-        )
-      )
+      print(tabulate(getAllClientCredCiudad(limite, ciudad), headers="keys", tablefmt="rounded_grid"))
+      input("presione una tecla para continuar...")
     elif opcion == 4:
       print(tabulate(getAllSpainClient(), headers="keys", tablefmt="rounded_grid"))
+      input("presione una tecla para continuar...")
     elif opcion == 5:
       direccion_1 = input("Ingrese la direccion principal registrada del cliente: ")
       direccion_2 = input("Ingrese una segunda direccion registrada: ")
       print(
-        tabulate(
-          getDireccion(direccion_1, direccion_2), headers="keys", tablefmt="rounded_grid"
-        )
-      )
+        tabulate(getDireccion(direccion_1, direccion_2), headers="keys", tablefmt="rounded_grid"))
+      input("presione una tecla para continuar...")
     elif opcion == 6:
       codigoPostal = input("Ingrese el codigo postal: ")
       print(tabulate(getCodigostal(codigoPostal), headers="keys", tablefmt="rounded_grid"))
@@ -289,8 +285,10 @@ def menu():
     
     elif opcion == 9:
       print(tabulate(getAllclientMadrid(), headers = "keys", tablefmt = "rounded_grid" ))
+      input("presione una tecla para continuar...")
     elif opcion == 10:
       print(tabulate(getAllclientsYrepventa(), headers = "keys", tablefmt = "rounded_grid"))
+      input("presione una tecla para continuar...")
     elif opcion == 0:
            
             print("regresando...")

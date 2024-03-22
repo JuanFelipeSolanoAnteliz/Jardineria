@@ -132,9 +132,35 @@ Seleccion incorrecta""")
     res["Mensaje"] = "Oficina Modificado"
     return [res]
     
+def menu():
+    while True:
+        os.system("clear")
+        print("""
+                __  __                        _               __ _      _                 
+                |  \/  |                      | |             / _(_)    (_)                
+                | \  / | ___ _ __  _   _    __| | ___    ___ | |_ _  ___ _ _ __   __ _ ___ 
+                | |\/| |/ _ \ '_ \| | | |  / _` |/ _ \  / _ \|  _| |/ __| | '_ \ / _` / __|
+                | |  | |  __/ | | | |_| | | (_| |  __/ | (_) | | | | (__| | | | | (_| \__ \
+                |_|  |_|\___|_| |_|\__,_|  \__,_|\___|  \___/|_| |_|\___|_|_| |_|\__,_|___/
+              
+              1. Reportes de las oficinas.
+              2. Administrador de las oficinas.
+
+              0. salir.
+                                                                            
+                                                                            
+""")
+        opcion = input("seleccione una de las opciones: ")
+        if opcion == 1: 
+                oF.menu()
+        elif opcion == 2:
+                menuadmin()
+        elif opcion == 0:
+            break
+               
 
                     
-def menu():
+def menuadmin():
     while True:
         print("""
   ____  _                           _     _               _             _           _       _     _                 _                  _                            _            _            

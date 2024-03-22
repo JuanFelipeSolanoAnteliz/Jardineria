@@ -13,9 +13,9 @@ def getEmpleadoCodigo(codigo):
             return [val]
 #json-server storage/empleado.json -b 5506
 def getAlldataEm():
-    peticion = requests.get("http://172.16.104.17:5506")
+    peticion = requests.get(" http://154.38.171.54:5003/empleados")
     data = peticion.json()
-    print(data)
+    return data
 #9
 def getAllNamesEmailBoss(codigo):
     nameEmailBoss = []
@@ -91,10 +91,13 @@ def menu():
     if opcion == 1:
         codigoJefe = input("indique el codigo del jefe: ")
         print(tabulate(getAllNamesEmailBoss(codigoJefe), headers = "keys", tablefmt = "rounded_grid"))
+        input("presione una tecla para continuar...")
     elif opcion == 2:
-        print(tabulate(getAllpuestoNombreApellidoEmailBoss(), headers = "keys", tablefmt = "rounded_grid")) 
+        print(tabulate(getAllpuestoNombreApellidoEmailBoss(), headers = "keys", tablefmt = "rounded_grid"))
+        input("presione una tecla para continuar...")
     elif opcion == 3:
         print(tabulate(getAllNAP(), headers = "keys", tablefmt = "rounded_grid")) 
+        input("presione una tecla para continuar...")
     elif opcion == 0:
             
             print("regresando...")

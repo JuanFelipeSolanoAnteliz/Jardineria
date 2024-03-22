@@ -5,9 +5,9 @@ from tabulate import tabulate
 
 #json-server storage/pago.json -b 5504
 def getAlldatapag():
-    peticion = requests.get("http://172.16.104.17:5504")
+    peticion = requests.get("http://154.38.171.54:5006/pagos")
     data = peticion.json()
-    print(data)
+    return data
     
 #14
 def getAllPago08Paypal():
@@ -76,12 +76,15 @@ def menu():
 
         if opcion == 1:
             print(tabulate(getAllPago08Paypal(), headers = "keys", tablefmt ="rounded_grid"))
+            input("presione una tecla para continuar...")
 
         elif opcion == 2:
             print(tabulate(getAllpagosPaypal(), headers = "keys", tablefmt = "rounded_grid" ))
+            input("presione una tecla para continuar...")
 
         elif opcion == 3:
             print(tabulate(getAllFormaPago(), headers = "keys", tablefmt = "rounded_grid" ))
+            input("presione una tecla para continuar...")
             
         elif opcion == 0:
             
